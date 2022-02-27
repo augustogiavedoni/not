@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:not/domain/auth/not_user.dart';
 
 import 'auth_failure.dart';
 import 'email_address.dart';
@@ -16,4 +17,8 @@ abstract class IAuthFacade {
   });
 
   Future<Either<AuthFailure, Unit>> signInWithGoogle();
+
+  Option<NotUser> getSignedInUser();
+
+  Future<void> signOut();
 }
