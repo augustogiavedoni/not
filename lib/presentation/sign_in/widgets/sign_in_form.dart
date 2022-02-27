@@ -124,19 +124,19 @@ class SignInForm extends StatelessWidget {
                 onPressed: () => BlocProvider.of<SignInFormBloc>(context).add(
                   const SignInFormEvent.signInWithEmailAndPasswordPressed(),
                 ),
-                child: Text("SIGN IN"),
+                child: const Text("SIGN IN"),
               ),
               OutlinedButton(
                 onPressed: () => BlocProvider.of<SignInFormBloc>(context).add(
                   const SignInFormEvent.signInWithGooglePressed(),
                 ),
-                child: Text("SIGN IN WITH GOOGLE"),
+                child: const Text("SIGN IN WITH GOOGLE"),
               ),
               OutlinedButton(
                 onPressed: () => BlocProvider.of<SignInFormBloc>(context).add(
                   const SignInFormEvent.registerWithEmailAndPasswordPressed(),
                 ),
-                child: Text("REGISTER"),
+                child: const Text("REGISTER"),
               ),
             ],
           ),
