@@ -7,6 +7,12 @@ class NotTheme {
       brightness: Brightness.light,
       textTheme: GoogleFonts.fredokaOneTextTheme(
         Theme.of(context).textTheme,
+      ).copyWith(
+        bodyText2: GoogleFonts.ralewayTextTheme().bodyText2,
+        button: GoogleFonts.fredokaOneTextTheme().button!.copyWith(
+              color: Colors.white,
+            ),
+            
       ),
     );
   }

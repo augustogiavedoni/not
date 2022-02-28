@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/svg.dart';
 
 import '../../../application/auth/sign_in_form/sign_in_form_bloc.dart';
 
@@ -10,6 +11,8 @@ class SignInForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final Size size = MediaQuery.of(context).size;
+
     return BlocConsumer<SignInFormBloc, SignInFormState>(
       listener: (context, state) {
         state.authFailureOrSuccessOption.fold(
@@ -39,35 +42,19 @@ class SignInForm extends StatelessWidget {
       builder: (context, state) {
         return Form(
           autovalidateMode: AutovalidateMode.onUserInteraction,
-          child: ListView(
+          child: Column(
             children: <Widget>[
-              Text(
-                "Welcome to Not!",
-                style: Theme.of(context).textTheme.headline5!.copyWith(
-                      color: wine,
-                    ),
-                textAlign: TextAlign.center,
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              Text(
-                "Not is a place to keep all your notes safe and available to help you througout your day",
-                style: Theme.of(context).textTheme.bodyText2!.copyWith(
-                      color: grey,
-                    ),
-                textAlign: TextAlign.center,
-              ),
-              const SizedBox(
-                height: 20,
-              ),
               TextFormField(
-                decoration: const InputDecoration(
-                  prefixIcon: Icon(
+                decoration: InputDecoration(
+                  prefixIcon: const Icon(
                     Icons.email_rounded,
                   ),
                   labelText: "Email",
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
                 ),
+                style: Theme.of(context).textTheme.bodyText2,
                 autocorrect: false,
                 enableSuggestions: true,
                 keyboardType: TextInputType.emailAddress,
@@ -89,15 +76,19 @@ class SignInForm extends StatelessWidget {
                     ),
               ),
               const SizedBox(
-                height: 5,
+                height: 10,
               ),
               TextFormField(
-                decoration: const InputDecoration(
-                  prefixIcon: Icon(
+                decoration: InputDecoration(
+                  prefixIcon: const Icon(
                     Icons.lock_rounded,
                   ),
                   labelText: "Password",
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
                 ),
+                style: Theme.of(context).textTheme.bodyText2,
                 autocorrect: false,
                 obscureText: true,
                 onChanged: (password) =>
@@ -121,23 +112,70 @@ class SignInForm extends StatelessWidget {
                 height: 20,
               ),
               OutlinedButton(
+                style: OutlinedButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  backgroundColor: wine,
+                  fixedSize: Size(
+                    size.width,
+                    size.height * 0.06,
+                  ),
+                ),
                 onPressed: () => BlocProvider.of<SignInFormBloc>(context).add(
                   const SignInFormEvent.signInWithEmailAndPasswordPressed(),
                 ),
-                child: const Text("SIGN IN"),
+                child: Text(
+                  "SIGN IN",
+                  style: Theme.of(context).textTheme.button,
+                ),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              Row(
+                children: const <Widget>[
+                  Expanded(
+                    child: Divider(
+                      thickness: 1,
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 10,
+                    ),
+                    child: Text(
+                      "Or continue with",
+                    ),
+                  ),
+                  Expanded(
+                    child: Divider(
+                      thickness: 1,
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(
+                height: 20,
               ),
               OutlinedButton(
                 onPressed: () => BlocProvider.of<SignInFormBloc>(context).add(
                   const SignInFormEvent.signInWithGooglePressed(),
                 ),
-                child: const Text("SIGN IN WITH GOOGLE"),
-              ),
-              OutlinedButton(
-                onPressed: () => BlocProvider.of<SignInFormBloc>(context).add(
-                  const SignInFormEvent.registerWithEmailAndPasswordPressed(),
+                child: Padding(
+                  padding: const EdgeInsets.all(5),
+                  child: SvgPicture.asset(
+                    "assets/images/google.svg",
+                    height: size.height * 0.025,
+                  ),
                 ),
-                child: const Text("REGISTER"),
               ),
+              // OutlinedButton(
+              //   onPressed: () => BlocProvider.of<SignInFormBloc>(context).add(
+              //     const SignInFormEvent.registerWithEmailAndPasswordPressed(),
+              //   ),
+              //   child: const Text("REGISTER"),
+              // ),
             ],
           ),
         );
