@@ -50,11 +50,16 @@ class _SignInFormState extends State<SignInForm> {
                     Icons.email_rounded,
                   ),
                   labelText: "Email",
+                  labelStyle: Theme.of(context).textTheme.bodyText2!.copyWith(
+                        color: Colors.white,
+                      ),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
                 ),
-                style: Theme.of(context).textTheme.bodyText2,
+                style: Theme.of(context).textTheme.bodyText2!.copyWith(
+                      color: Colors.white,
+                    ),
                 autocorrect: false,
                 enableSuggestions: true,
                 keyboardType: TextInputType.emailAddress,
@@ -84,11 +89,17 @@ class _SignInFormState extends State<SignInForm> {
                     Icons.lock_rounded,
                   ),
                   labelText: "Password",
+                  labelStyle: Theme.of(context).textTheme.bodyText2!.copyWith(
+                        color: Colors.white,
+                      ),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
+
                   ),
                 ),
-                style: Theme.of(context).textTheme.bodyText2,
+                style: Theme.of(context).textTheme.bodyText2!.copyWith(
+                      color: Colors.white,
+                    ),
                 autocorrect: false,
                 obscureText: true,
                 onChanged: (password) =>
@@ -114,9 +125,9 @@ class _SignInFormState extends State<SignInForm> {
               OutlinedButton(
                 style: OutlinedButton.styleFrom(
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
+                    borderRadius: BorderRadius.circular(15),
                   ),
-                  backgroundColor: wine,
+                  backgroundColor: yellow,
                   fixedSize: Size(
                     size.width,
                     size.height * 0.06,
@@ -130,31 +141,38 @@ class _SignInFormState extends State<SignInForm> {
                   );
                 },
                 child: Text(
-                  "SIGN IN",
-                  style: Theme.of(context).textTheme.button,
+                  "Sign in",
+                  style: Theme.of(context).textTheme.button!.copyWith(
+                        fontWeight: FontWeight.bold,
+                      ),
                 ),
               ),
               const SizedBox(
                 height: 20,
               ),
               Row(
-                children: const <Widget>[
-                  Expanded(
+                children: <Widget>[
+                  const Expanded(
                     child: Divider(
                       thickness: 1,
+                      color: Colors.white,
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.symmetric(
+                    padding: const EdgeInsets.symmetric(
                       horizontal: 10,
                     ),
                     child: Text(
                       "Or continue with",
+                      style: Theme.of(context).textTheme.bodyText2!.copyWith(
+                            color: Colors.white,
+                          ),
                     ),
                   ),
-                  Expanded(
+                  const Expanded(
                     child: Divider(
                       thickness: 1,
+                      color: Colors.white,
                     ),
                   ),
                 ],
@@ -166,10 +184,15 @@ class _SignInFormState extends State<SignInForm> {
                 onPressed: () => BlocProvider.of<SignInFormBloc>(context).add(
                   const SignInFormEvent.signInWithGooglePressed(),
                 ),
+                style: ButtonStyle(
+                  backgroundColor: MaterialStateColor.resolveWith(
+                    (_) => Colors.white,
+                  ),
+                ),
                 child: Padding(
                   padding: const EdgeInsets.all(5),
                   child: SvgPicture.asset(
-                    "assets/images/google.svg",
+                    "lib/presentation/core/assets/images/google.svg",
                     height: size.height * 0.025,
                   ),
                 ),

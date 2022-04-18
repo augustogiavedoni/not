@@ -14,7 +14,9 @@ class SplashScreen extends StatelessWidget {
     return BlocListener<AuthBloc, AuthState>(
       listener: (context, state) {
         state.map(
-          initial: (_) {},
+          initial: (_) => context.router.replace(
+            const OnboardingScreenRoute(),
+          ),
           authenticated: (_) {},
           unauthenticated: (_) => context.router.replace(
             const SignInScreenRoute(),

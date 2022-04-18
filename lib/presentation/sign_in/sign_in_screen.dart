@@ -17,44 +17,92 @@ class SignInScreen extends StatelessWidget {
     final Size size = MediaQuery.of(context).size;
 
     return Scaffold(
-      body: ListView(
-        padding: EdgeInsets.symmetric(
-          horizontal: size.width * 0.05,
-        ),
+      resizeToAvoidBottomInset: false,
+      backgroundColor: lightblue,
+      body: Column(
         children: <Widget>[
           SizedBox(
             height: size.height * 0.15,
           ),
-          Text(
-            "Welcome back!",
-            style: Theme.of(context).textTheme.headline5!.copyWith(
-                  color: wine,
+          Container(
+            decoration: const BoxDecoration(
+              color: black,
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(30),
+                topRight: Radius.circular(30),
+              ),
+            ),
+            height: size.height * 0.85,
+            child: Column(
+              children: <Widget>[
+                SizedBox(
+                  height: size.height * 0.10,
                 ),
-            textAlign: TextAlign.center,
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          // Text(
-          //   "Not is a place to keep all your notes safe and available to help you througout your day",
-          //   style: Theme.of(context).textTheme.bodyText2!.copyWith(
-          //         color: grey,
-          //       ),
-          //   textAlign: TextAlign.center,
-          // ),
-          Text(
-            "We missed you...",
-            style: Theme.of(context).textTheme.bodyText1!.copyWith(
-                  color: grey,
+                Text(
+                  "Welcome back!",
+                  style: Theme.of(context).textTheme.headline5!.copyWith(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                      ),
+                  textAlign: TextAlign.center,
                 ),
-            textAlign: TextAlign.center,
-          ),
-          SizedBox(
-            height: size.height * 0.10,
-          ),
-          BlocProvider(
-            create: (context) => getIt<SignInFormBloc>(),
-            child: const SignInForm(),
+                const SizedBox(
+                  height: 10,
+                ),
+                Text(
+                  "We missed you...",
+                  style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                        color: Colors.white,
+                      ),
+                  textAlign: TextAlign.center,
+                ),
+                SizedBox(
+                  height: size.height * 0.1,
+                ),
+                Padding(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: size.width * 0.05,
+                  ),
+                  child: BlocProvider(
+                    create: (context) => getIt<SignInFormBloc>(),
+                    child: const SignInForm(),
+                  ),
+                ),
+                const Spacer(),
+                Container(
+                  width: size.width,
+                  height: size.height * 0.1,
+                  decoration: const BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(30),
+                      topRight: Radius.circular(30),
+                    ),
+                  ),
+                  child: Column(
+                    children: <Widget>[
+                      const Spacer(),
+                      const Icon(
+                        Icons.keyboard_arrow_up_rounded,
+                        color: black,
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      Text(
+                        "Sign up",
+                        style:
+                            Theme.of(context).textTheme.headline6!.copyWith(
+                                  color: black,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                      ),
+                      const Spacer(),
+                    ],
+                  ),
+                ),
+              ],
+            ),
           ),
         ],
       ),
