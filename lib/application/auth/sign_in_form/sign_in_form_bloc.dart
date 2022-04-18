@@ -33,12 +33,12 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
           ),
         );
       } else if (event is RegisterWithEmailAndPasswordPressed) {
-        _performActionOnAuthFacadeWithEmailAndPassword(
+        await _performActionOnAuthFacadeWithEmailAndPassword(
           emit,
           _authFacade.registerWithEmailAndPassword,
         );
       } else if (event is SignInWithEmailAndPasswordPressed) {
-        _performActionOnAuthFacadeWithEmailAndPassword(
+        await _performActionOnAuthFacadeWithEmailAndPassword(
           emit,
           _authFacade.signInWithEmailAndPassword,
         );

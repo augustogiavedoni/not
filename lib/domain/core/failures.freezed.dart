@@ -37,6 +37,28 @@ class _$ValueFailureTearOff {
   EmptyPassword<T> emptyPassword<T>() {
     return EmptyPassword<T>();
   }
+
+  ExceedingLength<T> exceedingLength<T>(
+      {required String failedValue, required int maxLength}) {
+    return ExceedingLength<T>(
+      failedValue: failedValue,
+      maxLength: maxLength,
+    );
+  }
+
+  Empty<T> empty<T>() {
+    return Empty<T>();
+  }
+
+  MultiLine<T> multiLine<T>() {
+    return MultiLine<T>();
+  }
+
+  ListTooLong<T> listTooLong<T>({required int maxLength}) {
+    return ListTooLong<T>(
+      maxLength: maxLength,
+    );
+  }
 }
 
 /// @nodoc
@@ -50,6 +72,11 @@ mixin _$ValueFailure<T> {
     required TResult Function() emptyEmail,
     required TResult Function(String failedValue) shortPassword,
     required TResult Function() emptyPassword,
+    required TResult Function(String failedValue, int maxLength)
+        exceedingLength,
+    required TResult Function() empty,
+    required TResult Function() multiLine,
+    required TResult Function(int maxLength) listTooLong,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -58,6 +85,10 @@ mixin _$ValueFailure<T> {
     TResult Function()? emptyEmail,
     TResult Function(String failedValue)? shortPassword,
     TResult Function()? emptyPassword,
+    TResult Function(String failedValue, int maxLength)? exceedingLength,
+    TResult Function()? empty,
+    TResult Function()? multiLine,
+    TResult Function(int maxLength)? listTooLong,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -66,6 +97,10 @@ mixin _$ValueFailure<T> {
     TResult Function()? emptyEmail,
     TResult Function(String failedValue)? shortPassword,
     TResult Function()? emptyPassword,
+    TResult Function(String failedValue, int maxLength)? exceedingLength,
+    TResult Function()? empty,
+    TResult Function()? multiLine,
+    TResult Function(int maxLength)? listTooLong,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -75,6 +110,10 @@ mixin _$ValueFailure<T> {
     required TResult Function(EmptyEmail<T> value) emptyEmail,
     required TResult Function(ShortPassword<T> value) shortPassword,
     required TResult Function(EmptyPassword<T> value) emptyPassword,
+    required TResult Function(ExceedingLength<T> value) exceedingLength,
+    required TResult Function(Empty<T> value) empty,
+    required TResult Function(MultiLine<T> value) multiLine,
+    required TResult Function(ListTooLong<T> value) listTooLong,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -83,6 +122,10 @@ mixin _$ValueFailure<T> {
     TResult Function(EmptyEmail<T> value)? emptyEmail,
     TResult Function(ShortPassword<T> value)? shortPassword,
     TResult Function(EmptyPassword<T> value)? emptyPassword,
+    TResult Function(ExceedingLength<T> value)? exceedingLength,
+    TResult Function(Empty<T> value)? empty,
+    TResult Function(MultiLine<T> value)? multiLine,
+    TResult Function(ListTooLong<T> value)? listTooLong,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -91,6 +134,10 @@ mixin _$ValueFailure<T> {
     TResult Function(EmptyEmail<T> value)? emptyEmail,
     TResult Function(ShortPassword<T> value)? shortPassword,
     TResult Function(EmptyPassword<T> value)? emptyPassword,
+    TResult Function(ExceedingLength<T> value)? exceedingLength,
+    TResult Function(Empty<T> value)? empty,
+    TResult Function(MultiLine<T> value)? multiLine,
+    TResult Function(ListTooLong<T> value)? listTooLong,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -183,6 +230,11 @@ class _$InvalidEmail<T> implements InvalidEmail<T> {
     required TResult Function() emptyEmail,
     required TResult Function(String failedValue) shortPassword,
     required TResult Function() emptyPassword,
+    required TResult Function(String failedValue, int maxLength)
+        exceedingLength,
+    required TResult Function() empty,
+    required TResult Function() multiLine,
+    required TResult Function(int maxLength) listTooLong,
   }) {
     return invalidEmail(failedValue);
   }
@@ -194,6 +246,10 @@ class _$InvalidEmail<T> implements InvalidEmail<T> {
     TResult Function()? emptyEmail,
     TResult Function(String failedValue)? shortPassword,
     TResult Function()? emptyPassword,
+    TResult Function(String failedValue, int maxLength)? exceedingLength,
+    TResult Function()? empty,
+    TResult Function()? multiLine,
+    TResult Function(int maxLength)? listTooLong,
   }) {
     return invalidEmail?.call(failedValue);
   }
@@ -205,6 +261,10 @@ class _$InvalidEmail<T> implements InvalidEmail<T> {
     TResult Function()? emptyEmail,
     TResult Function(String failedValue)? shortPassword,
     TResult Function()? emptyPassword,
+    TResult Function(String failedValue, int maxLength)? exceedingLength,
+    TResult Function()? empty,
+    TResult Function()? multiLine,
+    TResult Function(int maxLength)? listTooLong,
     required TResult orElse(),
   }) {
     if (invalidEmail != null) {
@@ -220,6 +280,10 @@ class _$InvalidEmail<T> implements InvalidEmail<T> {
     required TResult Function(EmptyEmail<T> value) emptyEmail,
     required TResult Function(ShortPassword<T> value) shortPassword,
     required TResult Function(EmptyPassword<T> value) emptyPassword,
+    required TResult Function(ExceedingLength<T> value) exceedingLength,
+    required TResult Function(Empty<T> value) empty,
+    required TResult Function(MultiLine<T> value) multiLine,
+    required TResult Function(ListTooLong<T> value) listTooLong,
   }) {
     return invalidEmail(this);
   }
@@ -231,6 +295,10 @@ class _$InvalidEmail<T> implements InvalidEmail<T> {
     TResult Function(EmptyEmail<T> value)? emptyEmail,
     TResult Function(ShortPassword<T> value)? shortPassword,
     TResult Function(EmptyPassword<T> value)? emptyPassword,
+    TResult Function(ExceedingLength<T> value)? exceedingLength,
+    TResult Function(Empty<T> value)? empty,
+    TResult Function(MultiLine<T> value)? multiLine,
+    TResult Function(ListTooLong<T> value)? listTooLong,
   }) {
     return invalidEmail?.call(this);
   }
@@ -242,6 +310,10 @@ class _$InvalidEmail<T> implements InvalidEmail<T> {
     TResult Function(EmptyEmail<T> value)? emptyEmail,
     TResult Function(ShortPassword<T> value)? shortPassword,
     TResult Function(EmptyPassword<T> value)? emptyPassword,
+    TResult Function(ExceedingLength<T> value)? exceedingLength,
+    TResult Function(Empty<T> value)? empty,
+    TResult Function(MultiLine<T> value)? multiLine,
+    TResult Function(ListTooLong<T> value)? listTooLong,
     required TResult orElse(),
   }) {
     if (invalidEmail != null) {
@@ -305,6 +377,11 @@ class _$EmptyEmail<T> implements EmptyEmail<T> {
     required TResult Function() emptyEmail,
     required TResult Function(String failedValue) shortPassword,
     required TResult Function() emptyPassword,
+    required TResult Function(String failedValue, int maxLength)
+        exceedingLength,
+    required TResult Function() empty,
+    required TResult Function() multiLine,
+    required TResult Function(int maxLength) listTooLong,
   }) {
     return emptyEmail();
   }
@@ -316,6 +393,10 @@ class _$EmptyEmail<T> implements EmptyEmail<T> {
     TResult Function()? emptyEmail,
     TResult Function(String failedValue)? shortPassword,
     TResult Function()? emptyPassword,
+    TResult Function(String failedValue, int maxLength)? exceedingLength,
+    TResult Function()? empty,
+    TResult Function()? multiLine,
+    TResult Function(int maxLength)? listTooLong,
   }) {
     return emptyEmail?.call();
   }
@@ -327,6 +408,10 @@ class _$EmptyEmail<T> implements EmptyEmail<T> {
     TResult Function()? emptyEmail,
     TResult Function(String failedValue)? shortPassword,
     TResult Function()? emptyPassword,
+    TResult Function(String failedValue, int maxLength)? exceedingLength,
+    TResult Function()? empty,
+    TResult Function()? multiLine,
+    TResult Function(int maxLength)? listTooLong,
     required TResult orElse(),
   }) {
     if (emptyEmail != null) {
@@ -342,6 +427,10 @@ class _$EmptyEmail<T> implements EmptyEmail<T> {
     required TResult Function(EmptyEmail<T> value) emptyEmail,
     required TResult Function(ShortPassword<T> value) shortPassword,
     required TResult Function(EmptyPassword<T> value) emptyPassword,
+    required TResult Function(ExceedingLength<T> value) exceedingLength,
+    required TResult Function(Empty<T> value) empty,
+    required TResult Function(MultiLine<T> value) multiLine,
+    required TResult Function(ListTooLong<T> value) listTooLong,
   }) {
     return emptyEmail(this);
   }
@@ -353,6 +442,10 @@ class _$EmptyEmail<T> implements EmptyEmail<T> {
     TResult Function(EmptyEmail<T> value)? emptyEmail,
     TResult Function(ShortPassword<T> value)? shortPassword,
     TResult Function(EmptyPassword<T> value)? emptyPassword,
+    TResult Function(ExceedingLength<T> value)? exceedingLength,
+    TResult Function(Empty<T> value)? empty,
+    TResult Function(MultiLine<T> value)? multiLine,
+    TResult Function(ListTooLong<T> value)? listTooLong,
   }) {
     return emptyEmail?.call(this);
   }
@@ -364,6 +457,10 @@ class _$EmptyEmail<T> implements EmptyEmail<T> {
     TResult Function(EmptyEmail<T> value)? emptyEmail,
     TResult Function(ShortPassword<T> value)? shortPassword,
     TResult Function(EmptyPassword<T> value)? emptyPassword,
+    TResult Function(ExceedingLength<T> value)? exceedingLength,
+    TResult Function(Empty<T> value)? empty,
+    TResult Function(MultiLine<T> value)? multiLine,
+    TResult Function(ListTooLong<T> value)? listTooLong,
     required TResult orElse(),
   }) {
     if (emptyEmail != null) {
@@ -447,6 +544,11 @@ class _$ShortPassword<T> implements ShortPassword<T> {
     required TResult Function() emptyEmail,
     required TResult Function(String failedValue) shortPassword,
     required TResult Function() emptyPassword,
+    required TResult Function(String failedValue, int maxLength)
+        exceedingLength,
+    required TResult Function() empty,
+    required TResult Function() multiLine,
+    required TResult Function(int maxLength) listTooLong,
   }) {
     return shortPassword(failedValue);
   }
@@ -458,6 +560,10 @@ class _$ShortPassword<T> implements ShortPassword<T> {
     TResult Function()? emptyEmail,
     TResult Function(String failedValue)? shortPassword,
     TResult Function()? emptyPassword,
+    TResult Function(String failedValue, int maxLength)? exceedingLength,
+    TResult Function()? empty,
+    TResult Function()? multiLine,
+    TResult Function(int maxLength)? listTooLong,
   }) {
     return shortPassword?.call(failedValue);
   }
@@ -469,6 +575,10 @@ class _$ShortPassword<T> implements ShortPassword<T> {
     TResult Function()? emptyEmail,
     TResult Function(String failedValue)? shortPassword,
     TResult Function()? emptyPassword,
+    TResult Function(String failedValue, int maxLength)? exceedingLength,
+    TResult Function()? empty,
+    TResult Function()? multiLine,
+    TResult Function(int maxLength)? listTooLong,
     required TResult orElse(),
   }) {
     if (shortPassword != null) {
@@ -484,6 +594,10 @@ class _$ShortPassword<T> implements ShortPassword<T> {
     required TResult Function(EmptyEmail<T> value) emptyEmail,
     required TResult Function(ShortPassword<T> value) shortPassword,
     required TResult Function(EmptyPassword<T> value) emptyPassword,
+    required TResult Function(ExceedingLength<T> value) exceedingLength,
+    required TResult Function(Empty<T> value) empty,
+    required TResult Function(MultiLine<T> value) multiLine,
+    required TResult Function(ListTooLong<T> value) listTooLong,
   }) {
     return shortPassword(this);
   }
@@ -495,6 +609,10 @@ class _$ShortPassword<T> implements ShortPassword<T> {
     TResult Function(EmptyEmail<T> value)? emptyEmail,
     TResult Function(ShortPassword<T> value)? shortPassword,
     TResult Function(EmptyPassword<T> value)? emptyPassword,
+    TResult Function(ExceedingLength<T> value)? exceedingLength,
+    TResult Function(Empty<T> value)? empty,
+    TResult Function(MultiLine<T> value)? multiLine,
+    TResult Function(ListTooLong<T> value)? listTooLong,
   }) {
     return shortPassword?.call(this);
   }
@@ -506,6 +624,10 @@ class _$ShortPassword<T> implements ShortPassword<T> {
     TResult Function(EmptyEmail<T> value)? emptyEmail,
     TResult Function(ShortPassword<T> value)? shortPassword,
     TResult Function(EmptyPassword<T> value)? emptyPassword,
+    TResult Function(ExceedingLength<T> value)? exceedingLength,
+    TResult Function(Empty<T> value)? empty,
+    TResult Function(MultiLine<T> value)? multiLine,
+    TResult Function(ListTooLong<T> value)? listTooLong,
     required TResult orElse(),
   }) {
     if (shortPassword != null) {
@@ -570,6 +692,11 @@ class _$EmptyPassword<T> implements EmptyPassword<T> {
     required TResult Function() emptyEmail,
     required TResult Function(String failedValue) shortPassword,
     required TResult Function() emptyPassword,
+    required TResult Function(String failedValue, int maxLength)
+        exceedingLength,
+    required TResult Function() empty,
+    required TResult Function() multiLine,
+    required TResult Function(int maxLength) listTooLong,
   }) {
     return emptyPassword();
   }
@@ -581,6 +708,10 @@ class _$EmptyPassword<T> implements EmptyPassword<T> {
     TResult Function()? emptyEmail,
     TResult Function(String failedValue)? shortPassword,
     TResult Function()? emptyPassword,
+    TResult Function(String failedValue, int maxLength)? exceedingLength,
+    TResult Function()? empty,
+    TResult Function()? multiLine,
+    TResult Function(int maxLength)? listTooLong,
   }) {
     return emptyPassword?.call();
   }
@@ -592,6 +723,10 @@ class _$EmptyPassword<T> implements EmptyPassword<T> {
     TResult Function()? emptyEmail,
     TResult Function(String failedValue)? shortPassword,
     TResult Function()? emptyPassword,
+    TResult Function(String failedValue, int maxLength)? exceedingLength,
+    TResult Function()? empty,
+    TResult Function()? multiLine,
+    TResult Function(int maxLength)? listTooLong,
     required TResult orElse(),
   }) {
     if (emptyPassword != null) {
@@ -607,6 +742,10 @@ class _$EmptyPassword<T> implements EmptyPassword<T> {
     required TResult Function(EmptyEmail<T> value) emptyEmail,
     required TResult Function(ShortPassword<T> value) shortPassword,
     required TResult Function(EmptyPassword<T> value) emptyPassword,
+    required TResult Function(ExceedingLength<T> value) exceedingLength,
+    required TResult Function(Empty<T> value) empty,
+    required TResult Function(MultiLine<T> value) multiLine,
+    required TResult Function(ListTooLong<T> value) listTooLong,
   }) {
     return emptyPassword(this);
   }
@@ -618,6 +757,10 @@ class _$EmptyPassword<T> implements EmptyPassword<T> {
     TResult Function(EmptyEmail<T> value)? emptyEmail,
     TResult Function(ShortPassword<T> value)? shortPassword,
     TResult Function(EmptyPassword<T> value)? emptyPassword,
+    TResult Function(ExceedingLength<T> value)? exceedingLength,
+    TResult Function(Empty<T> value)? empty,
+    TResult Function(MultiLine<T> value)? multiLine,
+    TResult Function(ListTooLong<T> value)? listTooLong,
   }) {
     return emptyPassword?.call(this);
   }
@@ -629,6 +772,10 @@ class _$EmptyPassword<T> implements EmptyPassword<T> {
     TResult Function(EmptyEmail<T> value)? emptyEmail,
     TResult Function(ShortPassword<T> value)? shortPassword,
     TResult Function(EmptyPassword<T> value)? emptyPassword,
+    TResult Function(ExceedingLength<T> value)? exceedingLength,
+    TResult Function(Empty<T> value)? empty,
+    TResult Function(MultiLine<T> value)? multiLine,
+    TResult Function(ListTooLong<T> value)? listTooLong,
     required TResult orElse(),
   }) {
     if (emptyPassword != null) {
@@ -640,4 +787,641 @@ class _$EmptyPassword<T> implements EmptyPassword<T> {
 
 abstract class EmptyPassword<T> implements ValueFailure<T> {
   const factory EmptyPassword() = _$EmptyPassword<T>;
+}
+
+/// @nodoc
+abstract class $ExceedingLengthCopyWith<T, $Res> {
+  factory $ExceedingLengthCopyWith(
+          ExceedingLength<T> value, $Res Function(ExceedingLength<T>) then) =
+      _$ExceedingLengthCopyWithImpl<T, $Res>;
+  $Res call({String failedValue, int maxLength});
+}
+
+/// @nodoc
+class _$ExceedingLengthCopyWithImpl<T, $Res>
+    extends _$ValueFailureCopyWithImpl<T, $Res>
+    implements $ExceedingLengthCopyWith<T, $Res> {
+  _$ExceedingLengthCopyWithImpl(
+      ExceedingLength<T> _value, $Res Function(ExceedingLength<T>) _then)
+      : super(_value, (v) => _then(v as ExceedingLength<T>));
+
+  @override
+  ExceedingLength<T> get _value => super._value as ExceedingLength<T>;
+
+  @override
+  $Res call({
+    Object? failedValue = freezed,
+    Object? maxLength = freezed,
+  }) {
+    return _then(ExceedingLength<T>(
+      failedValue: failedValue == freezed
+          ? _value.failedValue
+          : failedValue // ignore: cast_nullable_to_non_nullable
+              as String,
+      maxLength: maxLength == freezed
+          ? _value.maxLength
+          : maxLength // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ExceedingLength<T> implements ExceedingLength<T> {
+  const _$ExceedingLength({required this.failedValue, required this.maxLength});
+
+  @override
+  final String failedValue;
+  @override
+  final int maxLength;
+
+  @override
+  String toString() {
+    return 'ValueFailure<$T>.exceedingLength(failedValue: $failedValue, maxLength: $maxLength)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is ExceedingLength<T> &&
+            const DeepCollectionEquality()
+                .equals(other.failedValue, failedValue) &&
+            const DeepCollectionEquality().equals(other.maxLength, maxLength));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(failedValue),
+      const DeepCollectionEquality().hash(maxLength));
+
+  @JsonKey(ignore: true)
+  @override
+  $ExceedingLengthCopyWith<T, ExceedingLength<T>> get copyWith =>
+      _$ExceedingLengthCopyWithImpl<T, ExceedingLength<T>>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String failedValue) invalidEmail,
+    required TResult Function() emptyEmail,
+    required TResult Function(String failedValue) shortPassword,
+    required TResult Function() emptyPassword,
+    required TResult Function(String failedValue, int maxLength)
+        exceedingLength,
+    required TResult Function() empty,
+    required TResult Function() multiLine,
+    required TResult Function(int maxLength) listTooLong,
+  }) {
+    return exceedingLength(failedValue, maxLength);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String failedValue)? invalidEmail,
+    TResult Function()? emptyEmail,
+    TResult Function(String failedValue)? shortPassword,
+    TResult Function()? emptyPassword,
+    TResult Function(String failedValue, int maxLength)? exceedingLength,
+    TResult Function()? empty,
+    TResult Function()? multiLine,
+    TResult Function(int maxLength)? listTooLong,
+  }) {
+    return exceedingLength?.call(failedValue, maxLength);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String failedValue)? invalidEmail,
+    TResult Function()? emptyEmail,
+    TResult Function(String failedValue)? shortPassword,
+    TResult Function()? emptyPassword,
+    TResult Function(String failedValue, int maxLength)? exceedingLength,
+    TResult Function()? empty,
+    TResult Function()? multiLine,
+    TResult Function(int maxLength)? listTooLong,
+    required TResult orElse(),
+  }) {
+    if (exceedingLength != null) {
+      return exceedingLength(failedValue, maxLength);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InvalidEmail<T> value) invalidEmail,
+    required TResult Function(EmptyEmail<T> value) emptyEmail,
+    required TResult Function(ShortPassword<T> value) shortPassword,
+    required TResult Function(EmptyPassword<T> value) emptyPassword,
+    required TResult Function(ExceedingLength<T> value) exceedingLength,
+    required TResult Function(Empty<T> value) empty,
+    required TResult Function(MultiLine<T> value) multiLine,
+    required TResult Function(ListTooLong<T> value) listTooLong,
+  }) {
+    return exceedingLength(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(InvalidEmail<T> value)? invalidEmail,
+    TResult Function(EmptyEmail<T> value)? emptyEmail,
+    TResult Function(ShortPassword<T> value)? shortPassword,
+    TResult Function(EmptyPassword<T> value)? emptyPassword,
+    TResult Function(ExceedingLength<T> value)? exceedingLength,
+    TResult Function(Empty<T> value)? empty,
+    TResult Function(MultiLine<T> value)? multiLine,
+    TResult Function(ListTooLong<T> value)? listTooLong,
+  }) {
+    return exceedingLength?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InvalidEmail<T> value)? invalidEmail,
+    TResult Function(EmptyEmail<T> value)? emptyEmail,
+    TResult Function(ShortPassword<T> value)? shortPassword,
+    TResult Function(EmptyPassword<T> value)? emptyPassword,
+    TResult Function(ExceedingLength<T> value)? exceedingLength,
+    TResult Function(Empty<T> value)? empty,
+    TResult Function(MultiLine<T> value)? multiLine,
+    TResult Function(ListTooLong<T> value)? listTooLong,
+    required TResult orElse(),
+  }) {
+    if (exceedingLength != null) {
+      return exceedingLength(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ExceedingLength<T> implements ValueFailure<T> {
+  const factory ExceedingLength(
+      {required String failedValue,
+      required int maxLength}) = _$ExceedingLength<T>;
+
+  String get failedValue;
+  int get maxLength;
+  @JsonKey(ignore: true)
+  $ExceedingLengthCopyWith<T, ExceedingLength<T>> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $EmptyCopyWith<T, $Res> {
+  factory $EmptyCopyWith(Empty<T> value, $Res Function(Empty<T>) then) =
+      _$EmptyCopyWithImpl<T, $Res>;
+}
+
+/// @nodoc
+class _$EmptyCopyWithImpl<T, $Res> extends _$ValueFailureCopyWithImpl<T, $Res>
+    implements $EmptyCopyWith<T, $Res> {
+  _$EmptyCopyWithImpl(Empty<T> _value, $Res Function(Empty<T>) _then)
+      : super(_value, (v) => _then(v as Empty<T>));
+
+  @override
+  Empty<T> get _value => super._value as Empty<T>;
+}
+
+/// @nodoc
+
+class _$Empty<T> implements Empty<T> {
+  const _$Empty();
+
+  @override
+  String toString() {
+    return 'ValueFailure<$T>.empty()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is Empty<T>);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String failedValue) invalidEmail,
+    required TResult Function() emptyEmail,
+    required TResult Function(String failedValue) shortPassword,
+    required TResult Function() emptyPassword,
+    required TResult Function(String failedValue, int maxLength)
+        exceedingLength,
+    required TResult Function() empty,
+    required TResult Function() multiLine,
+    required TResult Function(int maxLength) listTooLong,
+  }) {
+    return empty();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String failedValue)? invalidEmail,
+    TResult Function()? emptyEmail,
+    TResult Function(String failedValue)? shortPassword,
+    TResult Function()? emptyPassword,
+    TResult Function(String failedValue, int maxLength)? exceedingLength,
+    TResult Function()? empty,
+    TResult Function()? multiLine,
+    TResult Function(int maxLength)? listTooLong,
+  }) {
+    return empty?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String failedValue)? invalidEmail,
+    TResult Function()? emptyEmail,
+    TResult Function(String failedValue)? shortPassword,
+    TResult Function()? emptyPassword,
+    TResult Function(String failedValue, int maxLength)? exceedingLength,
+    TResult Function()? empty,
+    TResult Function()? multiLine,
+    TResult Function(int maxLength)? listTooLong,
+    required TResult orElse(),
+  }) {
+    if (empty != null) {
+      return empty();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InvalidEmail<T> value) invalidEmail,
+    required TResult Function(EmptyEmail<T> value) emptyEmail,
+    required TResult Function(ShortPassword<T> value) shortPassword,
+    required TResult Function(EmptyPassword<T> value) emptyPassword,
+    required TResult Function(ExceedingLength<T> value) exceedingLength,
+    required TResult Function(Empty<T> value) empty,
+    required TResult Function(MultiLine<T> value) multiLine,
+    required TResult Function(ListTooLong<T> value) listTooLong,
+  }) {
+    return empty(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(InvalidEmail<T> value)? invalidEmail,
+    TResult Function(EmptyEmail<T> value)? emptyEmail,
+    TResult Function(ShortPassword<T> value)? shortPassword,
+    TResult Function(EmptyPassword<T> value)? emptyPassword,
+    TResult Function(ExceedingLength<T> value)? exceedingLength,
+    TResult Function(Empty<T> value)? empty,
+    TResult Function(MultiLine<T> value)? multiLine,
+    TResult Function(ListTooLong<T> value)? listTooLong,
+  }) {
+    return empty?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InvalidEmail<T> value)? invalidEmail,
+    TResult Function(EmptyEmail<T> value)? emptyEmail,
+    TResult Function(ShortPassword<T> value)? shortPassword,
+    TResult Function(EmptyPassword<T> value)? emptyPassword,
+    TResult Function(ExceedingLength<T> value)? exceedingLength,
+    TResult Function(Empty<T> value)? empty,
+    TResult Function(MultiLine<T> value)? multiLine,
+    TResult Function(ListTooLong<T> value)? listTooLong,
+    required TResult orElse(),
+  }) {
+    if (empty != null) {
+      return empty(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class Empty<T> implements ValueFailure<T> {
+  const factory Empty() = _$Empty<T>;
+}
+
+/// @nodoc
+abstract class $MultiLineCopyWith<T, $Res> {
+  factory $MultiLineCopyWith(
+          MultiLine<T> value, $Res Function(MultiLine<T>) then) =
+      _$MultiLineCopyWithImpl<T, $Res>;
+}
+
+/// @nodoc
+class _$MultiLineCopyWithImpl<T, $Res>
+    extends _$ValueFailureCopyWithImpl<T, $Res>
+    implements $MultiLineCopyWith<T, $Res> {
+  _$MultiLineCopyWithImpl(
+      MultiLine<T> _value, $Res Function(MultiLine<T>) _then)
+      : super(_value, (v) => _then(v as MultiLine<T>));
+
+  @override
+  MultiLine<T> get _value => super._value as MultiLine<T>;
+}
+
+/// @nodoc
+
+class _$MultiLine<T> implements MultiLine<T> {
+  const _$MultiLine();
+
+  @override
+  String toString() {
+    return 'ValueFailure<$T>.multiLine()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is MultiLine<T>);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String failedValue) invalidEmail,
+    required TResult Function() emptyEmail,
+    required TResult Function(String failedValue) shortPassword,
+    required TResult Function() emptyPassword,
+    required TResult Function(String failedValue, int maxLength)
+        exceedingLength,
+    required TResult Function() empty,
+    required TResult Function() multiLine,
+    required TResult Function(int maxLength) listTooLong,
+  }) {
+    return multiLine();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String failedValue)? invalidEmail,
+    TResult Function()? emptyEmail,
+    TResult Function(String failedValue)? shortPassword,
+    TResult Function()? emptyPassword,
+    TResult Function(String failedValue, int maxLength)? exceedingLength,
+    TResult Function()? empty,
+    TResult Function()? multiLine,
+    TResult Function(int maxLength)? listTooLong,
+  }) {
+    return multiLine?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String failedValue)? invalidEmail,
+    TResult Function()? emptyEmail,
+    TResult Function(String failedValue)? shortPassword,
+    TResult Function()? emptyPassword,
+    TResult Function(String failedValue, int maxLength)? exceedingLength,
+    TResult Function()? empty,
+    TResult Function()? multiLine,
+    TResult Function(int maxLength)? listTooLong,
+    required TResult orElse(),
+  }) {
+    if (multiLine != null) {
+      return multiLine();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InvalidEmail<T> value) invalidEmail,
+    required TResult Function(EmptyEmail<T> value) emptyEmail,
+    required TResult Function(ShortPassword<T> value) shortPassword,
+    required TResult Function(EmptyPassword<T> value) emptyPassword,
+    required TResult Function(ExceedingLength<T> value) exceedingLength,
+    required TResult Function(Empty<T> value) empty,
+    required TResult Function(MultiLine<T> value) multiLine,
+    required TResult Function(ListTooLong<T> value) listTooLong,
+  }) {
+    return multiLine(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(InvalidEmail<T> value)? invalidEmail,
+    TResult Function(EmptyEmail<T> value)? emptyEmail,
+    TResult Function(ShortPassword<T> value)? shortPassword,
+    TResult Function(EmptyPassword<T> value)? emptyPassword,
+    TResult Function(ExceedingLength<T> value)? exceedingLength,
+    TResult Function(Empty<T> value)? empty,
+    TResult Function(MultiLine<T> value)? multiLine,
+    TResult Function(ListTooLong<T> value)? listTooLong,
+  }) {
+    return multiLine?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InvalidEmail<T> value)? invalidEmail,
+    TResult Function(EmptyEmail<T> value)? emptyEmail,
+    TResult Function(ShortPassword<T> value)? shortPassword,
+    TResult Function(EmptyPassword<T> value)? emptyPassword,
+    TResult Function(ExceedingLength<T> value)? exceedingLength,
+    TResult Function(Empty<T> value)? empty,
+    TResult Function(MultiLine<T> value)? multiLine,
+    TResult Function(ListTooLong<T> value)? listTooLong,
+    required TResult orElse(),
+  }) {
+    if (multiLine != null) {
+      return multiLine(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class MultiLine<T> implements ValueFailure<T> {
+  const factory MultiLine() = _$MultiLine<T>;
+}
+
+/// @nodoc
+abstract class $ListTooLongCopyWith<T, $Res> {
+  factory $ListTooLongCopyWith(
+          ListTooLong<T> value, $Res Function(ListTooLong<T>) then) =
+      _$ListTooLongCopyWithImpl<T, $Res>;
+  $Res call({int maxLength});
+}
+
+/// @nodoc
+class _$ListTooLongCopyWithImpl<T, $Res>
+    extends _$ValueFailureCopyWithImpl<T, $Res>
+    implements $ListTooLongCopyWith<T, $Res> {
+  _$ListTooLongCopyWithImpl(
+      ListTooLong<T> _value, $Res Function(ListTooLong<T>) _then)
+      : super(_value, (v) => _then(v as ListTooLong<T>));
+
+  @override
+  ListTooLong<T> get _value => super._value as ListTooLong<T>;
+
+  @override
+  $Res call({
+    Object? maxLength = freezed,
+  }) {
+    return _then(ListTooLong<T>(
+      maxLength: maxLength == freezed
+          ? _value.maxLength
+          : maxLength // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ListTooLong<T> implements ListTooLong<T> {
+  const _$ListTooLong({required this.maxLength});
+
+  @override
+  final int maxLength;
+
+  @override
+  String toString() {
+    return 'ValueFailure<$T>.listTooLong(maxLength: $maxLength)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is ListTooLong<T> &&
+            const DeepCollectionEquality().equals(other.maxLength, maxLength));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(maxLength));
+
+  @JsonKey(ignore: true)
+  @override
+  $ListTooLongCopyWith<T, ListTooLong<T>> get copyWith =>
+      _$ListTooLongCopyWithImpl<T, ListTooLong<T>>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String failedValue) invalidEmail,
+    required TResult Function() emptyEmail,
+    required TResult Function(String failedValue) shortPassword,
+    required TResult Function() emptyPassword,
+    required TResult Function(String failedValue, int maxLength)
+        exceedingLength,
+    required TResult Function() empty,
+    required TResult Function() multiLine,
+    required TResult Function(int maxLength) listTooLong,
+  }) {
+    return listTooLong(maxLength);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String failedValue)? invalidEmail,
+    TResult Function()? emptyEmail,
+    TResult Function(String failedValue)? shortPassword,
+    TResult Function()? emptyPassword,
+    TResult Function(String failedValue, int maxLength)? exceedingLength,
+    TResult Function()? empty,
+    TResult Function()? multiLine,
+    TResult Function(int maxLength)? listTooLong,
+  }) {
+    return listTooLong?.call(maxLength);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String failedValue)? invalidEmail,
+    TResult Function()? emptyEmail,
+    TResult Function(String failedValue)? shortPassword,
+    TResult Function()? emptyPassword,
+    TResult Function(String failedValue, int maxLength)? exceedingLength,
+    TResult Function()? empty,
+    TResult Function()? multiLine,
+    TResult Function(int maxLength)? listTooLong,
+    required TResult orElse(),
+  }) {
+    if (listTooLong != null) {
+      return listTooLong(maxLength);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InvalidEmail<T> value) invalidEmail,
+    required TResult Function(EmptyEmail<T> value) emptyEmail,
+    required TResult Function(ShortPassword<T> value) shortPassword,
+    required TResult Function(EmptyPassword<T> value) emptyPassword,
+    required TResult Function(ExceedingLength<T> value) exceedingLength,
+    required TResult Function(Empty<T> value) empty,
+    required TResult Function(MultiLine<T> value) multiLine,
+    required TResult Function(ListTooLong<T> value) listTooLong,
+  }) {
+    return listTooLong(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(InvalidEmail<T> value)? invalidEmail,
+    TResult Function(EmptyEmail<T> value)? emptyEmail,
+    TResult Function(ShortPassword<T> value)? shortPassword,
+    TResult Function(EmptyPassword<T> value)? emptyPassword,
+    TResult Function(ExceedingLength<T> value)? exceedingLength,
+    TResult Function(Empty<T> value)? empty,
+    TResult Function(MultiLine<T> value)? multiLine,
+    TResult Function(ListTooLong<T> value)? listTooLong,
+  }) {
+    return listTooLong?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InvalidEmail<T> value)? invalidEmail,
+    TResult Function(EmptyEmail<T> value)? emptyEmail,
+    TResult Function(ShortPassword<T> value)? shortPassword,
+    TResult Function(EmptyPassword<T> value)? emptyPassword,
+    TResult Function(ExceedingLength<T> value)? exceedingLength,
+    TResult Function(Empty<T> value)? empty,
+    TResult Function(MultiLine<T> value)? multiLine,
+    TResult Function(ListTooLong<T> value)? listTooLong,
+    required TResult orElse(),
+  }) {
+    if (listTooLong != null) {
+      return listTooLong(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ListTooLong<T> implements ValueFailure<T> {
+  const factory ListTooLong({required int maxLength}) = _$ListTooLong<T>;
+
+  int get maxLength;
+  @JsonKey(ignore: true)
+  $ListTooLongCopyWith<T, ListTooLong<T>> get copyWith =>
+      throw _privateConstructorUsedError;
 }
