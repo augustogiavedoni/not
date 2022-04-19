@@ -249,12 +249,6 @@ class _SignInFormState extends State<SignInForm> {
                   ),
                 ),
               ),
-              // OutlinedButton(
-              //   onPressed: () => BlocProvider.of<SignInFormBloc>(context).add(
-              //     const SignInFormEvent.registerWithEmailAndPasswordPressed(),
-              //   ),
-              //   child: const Text("REGISTER"),
-              // ),
             ],
           ),
         );

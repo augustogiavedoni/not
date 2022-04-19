@@ -3,21 +3,21 @@ import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
+import '../../../domain/auth/auth_failure.dart';
 import '../../../domain/auth/email_address.dart';
 import '../../../domain/auth/i_auth_facade.dart';
 import '../../../domain/auth/password.dart';
-import '../../../domain/auth/auth_failure.dart';
 
-part 'sign_in_form_event.dart';
-part 'sign_in_form_state.dart';
-part 'sign_in_form_bloc.freezed.dart';
+part 'sign_up_form_event.dart';
+part 'sign_up_form_state.dart';
+part 'sign_up_form_bloc.freezed.dart';
 
 @injectable
-class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
+class SignUpFormBloc extends Bloc<SignUpFormEvent, SignUpFormState> {
   final IAuthFacade _authFacade;
 
-  SignInFormBloc(this._authFacade) : super(SignInFormState.initial()) {
-    on<SignInFormEvent>((event, emit) async {
+  SignUpFormBloc(this._authFacade) : super(SignUpFormState.initial()) {
+    on<SignUpFormEvent>((event, emit) async {
       if (event is EmailChanged) {
         emit(
           state.copyWith(
@@ -32,34 +32,17 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
             authFailureOrSuccessOption: none(),
           ),
         );
-      } else if (event is SignInWithEmailAndPasswordPressed) {
+      } else if (event is RegisterWithEmailAndPasswordPressed) {
         await _performActionOnAuthFacadeWithEmailAndPassword(
           emit,
-          _authFacade.signInWithEmailAndPassword,
-        );
-      } else if (event is SignInWithGooglePressed) {
-        emit(
-          state.copyWith(
-            isSubmitting: true,
-            authFailureOrSuccessOption: none(),
-          ),
-        );
-
-        final Either<AuthFailure, Unit> failureOrSuccess =
-            await _authFacade.signInWithGoogle();
-
-        emit(
-          state.copyWith(
-            isSubmitting: false,
-            authFailureOrSuccessOption: some(failureOrSuccess),
-          ),
+          _authFacade.registerWithEmailAndPassword,
         );
       }
     });
   }
 
   Future<void> _performActionOnAuthFacadeWithEmailAndPassword(
-    Emitter<SignInFormState> emitter,
+    Emitter<SignUpFormState> emitter,
     Future<Either<AuthFailure, Unit>> Function({
       required EmailAddress emailAddress,
       required Password password,

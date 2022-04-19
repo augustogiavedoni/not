@@ -16,7 +16,7 @@ Either<ValueFailure<String>, String> validateEmailAddress(String emailAddress) {
     } else {
       return left(
         ValueFailure.invalidEmail(failedValue: emailAddress),
-      ); 
+      );
     }
   }
 }
