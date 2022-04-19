@@ -20,6 +20,7 @@ class SignInForm extends StatefulWidget {
 
 class _SignInFormState extends State<SignInForm> {
   bool _needsValidation = false;
+  bool _isLoading = false;
 
   @override
   Widget build(BuildContext context) {
@@ -48,18 +49,31 @@ class _SignInFormState extends State<SignInForm> {
                 decoration: InputDecoration(
                   prefixIcon: const Icon(
                     Icons.email_rounded,
+                    color: Colors.white,
                   ),
                   labelText: "Email",
                   labelStyle: Theme.of(context).textTheme.bodyText2!.copyWith(
                         color: Colors.white,
                       ),
-                  border: OutlineInputBorder(
+                  border: UnderlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
+                  enabledBorder: const UnderlineInputBorder(
+                    borderSide: BorderSide(
+                      color: yellow,
+                    ),
+                  ),
+                  focusedBorder: const UnderlineInputBorder(
+                    borderSide: BorderSide(
+                      color: yellow,
+                    ),
+                  ),
+                  focusColor: Colors.white,
                 ),
                 style: Theme.of(context).textTheme.bodyText2!.copyWith(
                       color: Colors.white,
                     ),
+                cursorColor: yellow,
                 autocorrect: false,
                 enableSuggestions: true,
                 keyboardType: TextInputType.emailAddress,
@@ -87,19 +101,31 @@ class _SignInFormState extends State<SignInForm> {
                 decoration: InputDecoration(
                   prefixIcon: const Icon(
                     Icons.lock_rounded,
+                    color: Colors.white,
                   ),
                   labelText: "Password",
                   labelStyle: Theme.of(context).textTheme.bodyText2!.copyWith(
                         color: Colors.white,
                       ),
-                  border: OutlineInputBorder(
+                  border: UnderlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
-
                   ),
+                  enabledBorder: const UnderlineInputBorder(
+                    borderSide: BorderSide(
+                      color: yellow,
+                    ),
+                  ),
+                  focusedBorder: const UnderlineInputBorder(
+                    borderSide: BorderSide(
+                      color: yellow,
+                    ),
+                  ),
+                  focusColor: Colors.white,
                 ),
                 style: Theme.of(context).textTheme.bodyText2!.copyWith(
                       color: Colors.white,
                     ),
+                cursorColor: yellow,
                 autocorrect: false,
                 obscureText: true,
                 onChanged: (password) =>
@@ -134,18 +160,44 @@ class _SignInFormState extends State<SignInForm> {
                   ),
                 ),
                 onPressed: () {
+                  final bool isEmailValid =
+                      BlocProvider.of<SignInFormBloc>(context)
+                          .state
+                          .emailAddress
+                          .isValid();
+                  final bool isPasswordValid =
+                      BlocProvider.of<SignInFormBloc>(context)
+                          .state
+                          .password
+                          .isValid();
                   _needsValidation = true;
+
+                  if (isEmailValid && isPasswordValid) {
+                    setState(() {
+                      _isLoading = true;
+                    });
+                  }
 
                   BlocProvider.of<SignInFormBloc>(context).add(
                     const SignInFormEvent.signInWithEmailAndPasswordPressed(),
                   );
                 },
-                child: Text(
-                  "Sign in",
-                  style: Theme.of(context).textTheme.button!.copyWith(
-                        fontWeight: FontWeight.bold,
+                child: !_isLoading
+                    ? Text(
+                        "Sign in",
+                        style: Theme.of(context).textTheme.button!.copyWith(
+                              fontWeight: FontWeight.bold,
+                            ),
+                      )
+                    : const SizedBox(
+                        width: 24,
+                        height: 24,
+                        child: Center(
+                          child: CircularProgressIndicator(
+                            color: black,
+                          ),
+                        ),
                       ),
-                ),
               ),
               const SizedBox(
                 height: 20,
@@ -228,6 +280,10 @@ class _SignInFormState extends State<SignInForm> {
       onPressed: () => Navigator.of(context).pop(),
       child: Text("Go back"),
     );
+
+    setState(() {
+      _isLoading = false;
+    });
 
     return showDialog(
       context: context,
