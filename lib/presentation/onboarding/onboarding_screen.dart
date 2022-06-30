@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../presentation/sign_in/sign_in_screen.dart';
 
@@ -64,6 +65,27 @@ class OnboardingScreen extends StatelessWidget {
               bottom: size.height * 0.1,
               right: size.width * 0.05,
               child: TextButton(
+                style: ButtonStyle(
+                  backgroundColor:
+                      MaterialStateColor.resolveWith((states) => black),
+                  elevation: MaterialStateProperty.all(0.5),
+                  shape: MaterialStateProperty.all(
+                    RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                  ),
+                ),
+                onPressed: () {
+                  SharedPreferences.getInstance().then((preferences) {
+                    preferences.setBool("is_onboarding_completed", true);
+                  });
+
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => const SignInScreen(),
+                    ),
+                  );
+                },
                 child: Padding(
                   padding: EdgeInsets.symmetric(
                     horizontal: size.width * 0.025,
@@ -75,21 +97,6 @@ class OnboardingScreen extends StatelessWidget {
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
                         ),
-                  ),
-                ),
-                style: ButtonStyle(
-                  backgroundColor:
-                      MaterialStateColor.resolveWith((states) => black),
-                  elevation: MaterialStateProperty.all(0.5),
-                  shape: MaterialStateProperty.all(
-                    RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                  ),
-                ),
-                onPressed: () => Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) => const SignInScreen(),
                   ),
                 ),
               ),

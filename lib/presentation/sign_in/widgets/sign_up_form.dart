@@ -150,152 +150,153 @@ class _SignUpFormState extends State<SignUpForm> {
                                 (_) => null,
                               ),
                         ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        TextFormField(
+                          decoration: InputDecoration(
+                            prefixIcon: const Icon(
+                              Icons.lock_rounded,
+                              color: black,
+                            ),
+                            labelText: "Password",
+                            labelStyle:
+                                Theme.of(context).textTheme.bodyText2!.copyWith(
+                                      color: black,
+                                    ),
+                            border: UnderlineInputBorder(
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            enabledBorder: const UnderlineInputBorder(
+                              borderSide: BorderSide(
+                                color: yellow,
+                              ),
+                            ),
+                            focusedBorder: const UnderlineInputBorder(
+                              borderSide: BorderSide(
+                                color: yellow,
+                              ),
+                            ),
+                            focusColor: Colors.white,
+                          ),
+                          style:
+                              Theme.of(context).textTheme.bodyText2!.copyWith(
+                                    color: black,
+                                  ),
+                          cursorColor: yellow,
+                          autocorrect: false,
+                          obscureText: true,
+                          onChanged: (password) =>
+                              BlocProvider.of<SignUpFormBloc>(context).add(
+                            SignUpFormEvent.passwordChanged(password),
+                          ),
+                          validator: (_) =>
+                              BlocProvider.of<SignUpFormBloc>(context)
+                                  .state
+                                  .password
+                                  .value
+                                  .fold(
+                                    (failure) => failure.maybeMap(
+                                      emptyPassword: (_) =>
+                                          "The password can't be empty",
+                                      shortPassword: (_) =>
+                                          "The password is too short",
+                                      orElse: () => null,
+                                    ),
+                                    (_) => null,
+                                  ),
+                        ),
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        OutlinedButton(
+                          style: OutlinedButton.styleFrom(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(15),
+                            ),
+                            backgroundColor: black,
+                            fixedSize: Size(
+                              size.width,
+                              size.height * 0.06,
+                            ),
+                          ),
+                          onPressed: () {
+                            final bool isEmailValid =
+                                BlocProvider.of<SignUpFormBloc>(context)
+                                    .state
+                                    .emailAddress
+                                    .isValid();
+                            final bool isPasswordValid =
+                                BlocProvider.of<SignUpFormBloc>(context)
+                                    .state
+                                    .password
+                                    .isValid();
+                            _needsValidation = true;
+
+                            if (isEmailValid && isPasswordValid) {
+                              setState(() {
+                                _isLoading = true;
+                              });
+
+                              BlocProvider.of<SignUpFormBloc>(context).add(
+                                const SignUpFormEvent
+                                    .registerWithEmailAndPasswordPressed(),
+                              );
+                            }
+                          },
+                          child: !_isLoading
+                              ? Text(
+                                  "Sign up",
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .button!
+                                      .copyWith(
+                                        color: yellow,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                )
+                              : const SizedBox(
+                                  width: 24,
+                                  height: 24,
+                                  child: Center(
+                                    child: CircularProgressIndicator(
+                                      color: yellow,
+                                    ),
+                                  ),
+                                ),
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        OutlinedButton(
+                          style: OutlinedButton.styleFrom(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(15),
+                            ),
+                            side: const BorderSide(
+                              color: yellow,
+                              width: 1,
+                            ),
+                            backgroundColor: Colors.white,
+                            fixedSize: Size(
+                              size.width,
+                              size.height * 0.06,
+                            ),
+                          ),
+                          onPressed: () => setState(() {
+                            _isSignUpShowing = false;
+                          }),
+                          child: Text(
+                            "Go back",
+                            style: Theme.of(context).textTheme.button!.copyWith(
+                                  color: black,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                          ),
+                        ),
                       ],
                     ),
                   ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  TextFormField(
-                    decoration: InputDecoration(
-                      prefixIcon: const Icon(
-                        Icons.lock_rounded,
-                        color: black,
-                      ),
-                      labelText: "Password",
-                      labelStyle:
-                          Theme.of(context).textTheme.bodyText2!.copyWith(
-                                color: black,
-                              ),
-                      border: UnderlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      enabledBorder: const UnderlineInputBorder(
-                        borderSide: BorderSide(
-                          color: yellow,
-                        ),
-                      ),
-                      focusedBorder: const UnderlineInputBorder(
-                        borderSide: BorderSide(
-                          color: yellow,
-                        ),
-                      ),
-                      focusColor: Colors.white,
-                    ),
-                    style: Theme.of(context).textTheme.bodyText2!.copyWith(
-                          color: black,
-                        ),
-                    cursorColor: yellow,
-                    autocorrect: false,
-                    obscureText: true,
-                    onChanged: (password) =>
-                        BlocProvider.of<SignUpFormBloc>(context).add(
-                      SignUpFormEvent.passwordChanged(password),
-                    ),
-                    validator: (_) => BlocProvider.of<SignUpFormBloc>(context)
-                        .state
-                        .password
-                        .value
-                        .fold(
-                          (failure) => failure.maybeMap(
-                            emptyPassword: (_) => "The password can't be empty",
-                            shortPassword: (_) => "The password is too short",
-                            orElse: () => null,
-                          ),
-                          (_) => null,
-                        ),
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  OutlinedButton(
-                    style: OutlinedButton.styleFrom(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(15),
-                      ),
-                      backgroundColor: black,
-                      fixedSize: Size(
-                        size.width,
-                        size.height * 0.06,
-                      ),
-                    ),
-                    onPressed: () {
-                      final bool isEmailValid =
-                          BlocProvider.of<SignUpFormBloc>(context)
-                              .state
-                              .emailAddress
-                              .isValid();
-                      final bool isPasswordValid =
-                          BlocProvider.of<SignUpFormBloc>(context)
-                              .state
-                              .password
-                              .isValid();
-                      _needsValidation = true;
-
-                      if (isEmailValid && isPasswordValid) {
-                        setState(() {
-                          _isLoading = true;
-                        });
-                      }
-
-                      BlocProvider.of<SignUpFormBloc>(context).add(
-                        const SignUpFormEvent
-                            .registerWithEmailAndPasswordPressed(),
-                      );
-                    },
-                    child: !_isLoading
-                        ? Text(
-                            "Sign up",
-                            style: Theme.of(context).textTheme.button!.copyWith(
-                                  color: yellow,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                          )
-                        : const SizedBox(
-                            width: 24,
-                            height: 24,
-                            child: Center(
-                              child: CircularProgressIndicator(
-                                color: black,
-                              ),
-                            ),
-                          ),
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  OutlinedButton(
-                    style: OutlinedButton.styleFrom(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(15),
-                      ),
-                      side: const BorderSide(
-                        color: yellow,
-                        width: 1,
-                      ),
-                      backgroundColor: Colors.white,
-                      fixedSize: Size(
-                        size.width,
-                        size.height * 0.06,
-                      ),
-                    ),
-                    onPressed: () => setState(() {
-                      _isSignUpShowing = false;
-                    }),
-                    child: Text(
-                      "Go back",
-                      style: Theme.of(context).textTheme.button!.copyWith(
-                            color: black,
-                            fontWeight: FontWeight.bold,
-                          ),
-                    ),
-                  ),
-                  // OutlinedButton(
-                  //   onPressed: () => BlocProvider.of<SignInFormBloc>(context).add(
-                  //     const SignUpFormEvent.registerWithEmailAndPasswordPressed(),
-                  //   ),
-                  //   child: const Text("REGISTER"),
-                  // ),
                 ],
               ),
             ),
