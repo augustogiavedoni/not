@@ -5,8 +5,8 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../domain/auth/not_user.dart';
-import '../../domain/auth/password.dart';
-import '../../domain/auth/email_address.dart';
+import '../../domain/auth/value_objects/password.dart';
+import '../../domain/auth/value_objects/email_address.dart';
 import '../../domain/auth/auth_failure.dart';
 import '../../domain/auth/i_auth_facade.dart';
 

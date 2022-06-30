@@ -35,6 +35,7 @@ dependencies:
   google_fonts: ^3.0.1
   google_sign_in: ^5.3.3
   injectable: ^1.5.3
+  kt_dart: ^0.10.0
   shared_preferences: ^2.0.15
   uuid: ^3.0.6
 

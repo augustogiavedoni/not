@@ -15,7 +15,7 @@ class AppWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final RootStackRouter _appRouter = app_router.Router();
+    final RootStackRouter appRouter = app_router.Router();
 
     return MultiBlocProvider(
       providers: <BlocProvider>[
@@ -27,8 +27,8 @@ class AppWidget extends StatelessWidget {
         ),
       ],
       child: MaterialApp.router(
-        routerDelegate: AutoRouterDelegate(_appRouter),
-        routeInformationParser: _appRouter.defaultRouteParser(),
+        routerDelegate: AutoRouterDelegate(appRouter),
+        routeInformationParser: appRouter.defaultRouteParser(),
         theme: NotTheme.light(context),
         title: "Not",
       ),

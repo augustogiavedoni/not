@@ -12,21 +12,7 @@ part of 'not_user.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$NotUserTearOff {
-  const _$NotUserTearOff();
-
-  _NotUser call({required UniqueId id}) {
-    return _NotUser(
-      id: id,
-    );
-  }
-}
-
-/// @nodoc
-const $NotUser = _$NotUserTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$NotUser {
@@ -65,27 +51,28 @@ class _$NotUserCopyWithImpl<$Res> implements $NotUserCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$NotUserCopyWith<$Res> implements $NotUserCopyWith<$Res> {
-  factory _$NotUserCopyWith(_NotUser value, $Res Function(_NotUser) then) =
-      __$NotUserCopyWithImpl<$Res>;
+abstract class _$$_NotUserCopyWith<$Res> implements $NotUserCopyWith<$Res> {
+  factory _$$_NotUserCopyWith(
+          _$_NotUser value, $Res Function(_$_NotUser) then) =
+      __$$_NotUserCopyWithImpl<$Res>;
   @override
   $Res call({UniqueId id});
 }
 
 /// @nodoc
-class __$NotUserCopyWithImpl<$Res> extends _$NotUserCopyWithImpl<$Res>
-    implements _$NotUserCopyWith<$Res> {
-  __$NotUserCopyWithImpl(_NotUser _value, $Res Function(_NotUser) _then)
-      : super(_value, (v) => _then(v as _NotUser));
+class __$$_NotUserCopyWithImpl<$Res> extends _$NotUserCopyWithImpl<$Res>
+    implements _$$_NotUserCopyWith<$Res> {
+  __$$_NotUserCopyWithImpl(_$_NotUser _value, $Res Function(_$_NotUser) _then)
+      : super(_value, (v) => _then(v as _$_NotUser));
 
   @override
-  _NotUser get _value => super._value as _NotUser;
+  _$_NotUser get _value => super._value as _$_NotUser;
 
   @override
   $Res call({
     Object? id = freezed,
   }) {
-    return _then(_NotUser(
+    return _then(_$_NotUser(
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -111,7 +98,7 @@ class _$_NotUser implements _NotUser {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _NotUser &&
+            other is _$_NotUser &&
             const DeepCollectionEquality().equals(other.id, id));
   }
 
@@ -121,17 +108,17 @@ class _$_NotUser implements _NotUser {
 
   @JsonKey(ignore: true)
   @override
-  _$NotUserCopyWith<_NotUser> get copyWith =>
-      __$NotUserCopyWithImpl<_NotUser>(this, _$identity);
+  _$$_NotUserCopyWith<_$_NotUser> get copyWith =>
+      __$$_NotUserCopyWithImpl<_$_NotUser>(this, _$identity);
 }
 
 abstract class _NotUser implements NotUser {
-  const factory _NotUser({required UniqueId id}) = _$_NotUser;
+  const factory _NotUser({required final UniqueId id}) = _$_NotUser;
 
   @override
-  UniqueId get id;
+  UniqueId get id => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$NotUserCopyWith<_NotUser> get copyWith =>
+  _$$_NotUserCopyWith<_$_NotUser> get copyWith =>
       throw _privateConstructorUsedError;
 }
