@@ -39,6 +39,7 @@ dependencies:
   injectable: ^1.5.3
   json_annotation: ^4.5.0
   kt_dart: ^0.10.0
+  rxdart: ^0.27.4
   shared_preferences: ^2.0.15
   uuid: ^3.0.6
 
