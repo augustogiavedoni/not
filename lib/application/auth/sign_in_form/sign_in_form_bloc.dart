@@ -18,43 +18,43 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
 
   SignInFormBloc(this._authFacade) : super(SignInFormState.initial()) {
     on<SignInFormEvent>((event, emit) async {
-      if (event is EmailChanged) {
-        emit(
+      event.map(
+        emailChanged: (event) => emit(
           state.copyWith(
             emailAddress: EmailAddress(event.emailAddress),
             authFailureOrSuccessOption: none(),
           ),
-        );
-      } else if (event is PasswordChanged) {
-        emit(
+        ),
+        passwordChanged: (event) => emit(
           state.copyWith(
             password: Password(event.password),
             authFailureOrSuccessOption: none(),
           ),
-        );
-      } else if (event is SignInWithEmailAndPasswordPressed) {
-        await _performActionOnAuthFacadeWithEmailAndPassword(
+        ),
+        signInWithEmailAndPasswordPressed: (event) async =>
+            await _performActionOnAuthFacadeWithEmailAndPassword(
           emit,
           _authFacade.signInWithEmailAndPassword,
-        );
-      } else if (event is SignInWithGooglePressed) {
-        emit(
-          state.copyWith(
-            isSubmitting: true,
-            authFailureOrSuccessOption: none(),
-          ),
-        );
+        ),
+        signInWithGooglePressed: (event) async {
+          emit(
+            state.copyWith(
+              isSubmitting: true,
+              authFailureOrSuccessOption: none(),
+            ),
+          );
 
-        final Either<AuthFailure, Unit> failureOrSuccess =
-            await _authFacade.signInWithGoogle();
+          final Either<AuthFailure, Unit> failureOrSuccess =
+              await _authFacade.signInWithGoogle();
 
-        emit(
-          state.copyWith(
-            isSubmitting: false,
-            authFailureOrSuccessOption: some(failureOrSuccess),
-          ),
-        );
-      }
+          emit(
+            state.copyWith(
+              isSubmitting: false,
+              authFailureOrSuccessOption: some(failureOrSuccess),
+            ),
+          );
+        },
+      );
     });
   }
 
