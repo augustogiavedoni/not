@@ -11,12 +11,12 @@ import '../routes/router.gr.dart' as app_router;
 import 'theme/app_theme.dart';
 
 class AppWidget extends StatelessWidget {
-  const AppWidget({Key? key}) : super(key: key);
+  final RootStackRouter appRouter = app_router.Router();
+
+  AppWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final RootStackRouter appRouter = app_router.Router();
-
     return MultiBlocProvider(
       providers: <BlocProvider>[
         BlocProvider<AuthBloc>(

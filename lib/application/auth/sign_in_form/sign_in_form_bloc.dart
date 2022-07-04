@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -18,7 +20,7 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
 
   SignInFormBloc(this._authFacade) : super(SignInFormState.initial()) {
     on<SignInFormEvent>((event, emit) async {
-      event.map(
+      await event.map<FutureOr<void>>(
         emailChanged: (event) => emit(
           state.copyWith(
             emailAddress: EmailAddress(event.emailAddress),

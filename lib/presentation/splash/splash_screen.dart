@@ -17,7 +17,9 @@ class SplashScreen extends StatelessWidget {
           initial: (_) => context.router.replace(
             const OnboardingScreenRoute(),
           ),
-          authenticated: (_) {},
+          authenticated: (_) => context.router.replace(
+            const NotesOverviewScreenRoute(),
+          ),
           unauthenticated: (_) => context.router.replace(
             const SignInScreenRoute(),
           ),

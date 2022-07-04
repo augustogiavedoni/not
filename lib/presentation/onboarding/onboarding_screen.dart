@@ -1,10 +1,10 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../presentation/sign_in/sign_in_screen.dart';
-
 import '../core/theme/app_colors.dart';
+import '../routes/router.gr.dart';
 
 class OnboardingScreen extends StatelessWidget {
   const OnboardingScreen({Key? key}) : super(key: key);
@@ -80,11 +80,7 @@ class OnboardingScreen extends StatelessWidget {
                     preferences.setBool("is_onboarding_completed", true);
                   });
 
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (context) => const SignInScreen(),
-                    ),
-                  );
+                  context.router.replace(const SignInScreenRoute());
                 },
                 child: Padding(
                   padding: EdgeInsets.symmetric(
