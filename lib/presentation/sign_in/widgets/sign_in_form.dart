@@ -11,6 +11,7 @@ import '../../../application/auth/sign_in_form/sign_in_form_bloc.dart';
 
 import '../../../domain/auth/auth_failure.dart';
 
+import '../../common_widgets/custom_dialog.dart';
 import '../../core/theme/app_colors.dart';
 import '../../routes/router.gr.dart';
 
@@ -267,19 +268,12 @@ class _SignInFormState extends State<SignInForm> {
     BuildContext context,
     AuthFailure failure,
   ) {
-    final Text title = Text("Something happened");
-    final Text content = Text(
-      failure.map(
-        cancelledByUser: (_) => "Operation cancelled by user",
-        serverError: (_) => "Woops! Something failed... Try again!",
-        emailAlreadyInUse: (_) => "The email is already in use",
-        invalidEmailAndPasswordCombination: (_) =>
-            "The combination of the email and the password is invalid",
-      ),
-    );
-    final TextButton button = TextButton(
-      onPressed: () => Navigator.of(context).pop(),
-      child: Text("Go back"),
+    final String description = failure.map(
+      cancelledByUser: (_) => "Operation cancelled by user",
+      serverError: (_) => "Woops! Something failed... Try again!",
+      emailAlreadyInUse: (_) => "The email is already in use",
+      invalidEmailAndPasswordCombination: (_) =>
+          "The combination of the email and the password is invalid",
     );
 
     setState(() {
@@ -288,17 +282,15 @@ class _SignInFormState extends State<SignInForm> {
 
     return showDialog(
       context: context,
-      builder: (context) => Platform.isIOS
-          ? CupertinoAlertDialog(
-              title: title,
-              content: content,
-              actions: [button],
-            )
-          : AlertDialog(
-              title: title,
-              content: content,
-              actions: [button],
-            ),
+      builder: (context) {
+        return CustomDialog(
+          title: "Something happened",
+          description: description,
+          mainButtonText: "Go back",
+          mainButtonFunctionality: () => Navigator.of(context).pop(),
+          dialogStatus: DialogStatus.error,
+        );
+      },
     );
   }
 }

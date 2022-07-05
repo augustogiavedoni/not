@@ -1,7 +1,4 @@
-import 'dart:io';
-
 import 'package:auto_route/auto_route.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -10,6 +7,7 @@ import '../../../application/notes/note_actor/note_actor_bloc.dart';
 import '../../../application/notes/note_watcher/note_watcher_bloc.dart';
 import '../../../domain/notes/note_failure.dart';
 import '../../../injection.dart';
+import '../../common_widgets/custom_dialog.dart';
 import '../../routes/router.gr.dart';
 import 'widgets/notes_overview_body.dart';
 
@@ -96,33 +94,24 @@ class NotesOverviewScreen extends StatelessWidget {
     BuildContext context,
     NoteFailure failure,
   ) {
-    const Text title = Text("Something happened");
-    final Text content = Text(
-      failure.map(
-        unexpected: (_) =>
-            "Unexpected error occured while deleting, please contact support.",
-        notFound: (_) => "",
-        insufficientPermission: (_) => "Insufficient permissions.",
-      ),
-    );
-    final TextButton button = TextButton(
-      onPressed: () => Navigator.of(context).pop(),
-      child: const Text("Go back"),
+    final String description = failure.map(
+      unexpected: (_) =>
+          "Unexpected error occured while deleting, please contact support.",
+      notFound: (_) => "",
+      insufficientPermission: (_) => "Insufficient permissions.",
     );
 
     return showDialog(
       context: context,
-      builder: (context) => Platform.isIOS
-          ? CupertinoAlertDialog(
-              title: title,
-              content: content,
-              actions: [button],
-            )
-          : AlertDialog(
-              title: title,
-              content: content,
-              actions: [button],
-            ),
+      builder: (context) {
+        return CustomDialog(
+          title: "Something happened",
+          description: description,
+          mainButtonText: "Go back",
+          mainButtonFunctionality: () => Navigator.of(context).pop(),
+          dialogStatus: DialogStatus.error,
+        );
+      },
     );
   }
 }
