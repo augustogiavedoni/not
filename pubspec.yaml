@@ -23,15 +23,17 @@ environment:
 dependencies:
   auto_route: ^4.2.0
   bloc: ^8.0.3
-  cloud_firestore: ^3.1.18
+  cloud_firestore: ^3.2.1
   cupertino_icons: ^1.0.5
   dartz: ^0.10.1
-  firebase_auth: ^3.3.20
-  firebase_core: ^1.18.0
+  firebase_app_check: ^0.0.6+16
+  firebase_auth: ^3.4.1
+  firebase_core: ^1.19.1
   flutter:
     sdk: flutter
   flutter_bloc: ^8.0.1
-  flutter_svg: ^1.1.1
+  flutter_staggered_grid_view: ^0.6.1
+  flutter_svg: ^1.1.1+1
   freezed_annotation: ^2.0.3
   get_it: ^7.2.0
   google_fonts: ^3.0.1

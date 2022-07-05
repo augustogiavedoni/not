@@ -11,6 +11,7 @@ import '../../../application/notes/note_watcher/note_watcher_bloc.dart';
 import '../../../domain/notes/note_failure.dart';
 import '../../../injection.dart';
 import '../../routes/router.gr.dart';
+import 'widgets/notes_overview_body.dart';
 
 class NotesOverviewScreen extends StatelessWidget {
   const NotesOverviewScreen({Key? key}) : super(key: key);
@@ -51,23 +52,41 @@ class NotesOverviewScreen extends StatelessWidget {
         ],
         child: Scaffold(
           appBar: AppBar(
-            title: const Text("Notes"),
-            leading: IconButton(
-              icon: Icon(Icons.exit_to_app),
-              onPressed: () =>
-                  context.read<AuthBloc>().add(const AuthEvent.signedOut()),
+            title: Text(
+              "Notes",
+              style: Theme.of(context).textTheme.headline5!.copyWith(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ),
             ),
-            actions: <Widget>[
-              IconButton(
-                icon: Icon(Icons.indeterminate_check_box),
-                onPressed: () {},
+            actions: const <Widget>[
+              CircleAvatar(
+                backgroundColor: Colors.amber,
+              ),
+              SizedBox(
+                width: 10,
               ),
             ],
+            elevation: 0,
+            backgroundColor: const Color(0XFF171D26),
+            // leading: IconButton(
+            //   icon: Icon(Icons.exit_to_app),
+            //   onPressed: () =>
+            //       context.read<AuthBloc>().add(const AuthEvent.signedOut()),
+            // ),
+            // actions: <Widget>[
+            //   IconButton(
+            //     icon: Icon(Icons.indeterminate_check_box),
+            //     onPressed: () {},
+            //   ),
+            // ],
           ),
           floatingActionButton: FloatingActionButton(
             onPressed: () {},
-            child: Icon(Icons.add),
+            child: const Icon(Icons.add),
           ),
+          body: const NotesOverviewBody(),
+          backgroundColor: const Color(0XFF171D26),
         ),
       ),
     );
@@ -77,7 +96,7 @@ class NotesOverviewScreen extends StatelessWidget {
     BuildContext context,
     NoteFailure failure,
   ) {
-    final Text title = Text("Something happened");
+    const Text title = Text("Something happened");
     final Text content = Text(
       failure.map(
         unexpected: (_) =>
@@ -88,7 +107,7 @@ class NotesOverviewScreen extends StatelessWidget {
     );
     final TextButton button = TextButton(
       onPressed: () => Navigator.of(context).pop(),
-      child: Text("Go back"),
+      child: const Text("Go back"),
     );
 
     return showDialog(

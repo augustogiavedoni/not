@@ -26,4 +26,8 @@ class List3<T> extends ValueObject<KtList<T>> {
   bool get isFull {
     return length == maxLength;
   }
+
+  bool get isEmpty {
+    return length == 0;
+  }
 }
