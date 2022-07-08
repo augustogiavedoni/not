@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
+import '../../../../application/auth/auth_bloc.dart';
 import '../../../../application/notes/note_watcher/note_watcher_bloc.dart';
 import '../../../../domain/notes/entities/note.dart';
+import '../../../../domain/notes/note_failure.dart';
+import '../../../common_widgets/custom_dialog.dart';
 import 'note_card.dart';
 import 'note_with_error_card.dart';
 
@@ -43,11 +46,42 @@ class NotesOverviewBody extends StatelessWidget {
               ),
             );
           },
-          loadFailure: (state) => Container(
-            color: Colors.yellow,
-            width: 100,
-            height: 100,
-          ),
+          loadFailure: (state) {
+            Future.delayed(
+              const Duration(milliseconds: 30),
+              () => _showFailureDialog(
+                context,
+                state.noteFailure,
+              ),
+            );
+
+            return const SizedBox();
+          },
+        );
+      },
+    );
+  }
+
+  Future<void> _showFailureDialog(
+    BuildContext context,
+    NoteFailure failure,
+  ) {
+    final String description = failure.maybeMap(
+      insufficientPermission: (_) =>
+          "You do not have the necessary permissions",
+      orElse: () => "Unexpected error. Please, contact support",
+    );
+
+    return showDialog(
+      context: context,
+      builder: (context) {
+        return CustomDialog(
+          title: "Something happened",
+          description: description,
+          mainButtonText: "Close",
+          mainButtonFunctionality: () =>
+              context.read<AuthBloc>().add(const AuthEvent.signedOut()),
+          dialogStatus: DialogStatus.error,
         );
       },
     );
