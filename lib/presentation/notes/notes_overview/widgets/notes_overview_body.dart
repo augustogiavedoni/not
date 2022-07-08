@@ -5,6 +5,7 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import '../../../../application/notes/note_watcher/note_watcher_bloc.dart';
 import '../../../../domain/notes/entities/note.dart';
 import 'note_card.dart';
+import 'note_with_error_card.dart';
 
 class NotesOverviewBody extends StatelessWidget {
   const NotesOverviewBody({Key? key}) : super(key: key);
@@ -34,15 +35,9 @@ class NotesOverviewBody extends StatelessWidget {
                   final Note note = state.notes[index];
 
                   if (note.failureOption.isSome()) {
-                    return Container(
-                      color: Colors.red,
-                      width: 100,
-                      height: 100,
-                    );
+                    return NoteWithErrorCard(note: note);
                   } else {
-                    return NoteCard(
-                      note: note,
-                    );
+                    return NoteCard(note: note);
                   }
                 }),
               ),

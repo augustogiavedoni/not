@@ -23,7 +23,7 @@ mixin _$ValueFailure<T> {
     required TResult Function(T failedValue) shortPassword,
     required TResult Function() emptyPassword,
     required TResult Function(T failedValue, int maxLength) exceedingLength,
-    required TResult Function(T failedValue) empty,
+    required TResult Function() empty,
     required TResult Function(T failedValue) multiLine,
     required TResult Function(T failedValue, int maxLength) listTooLong,
   }) =>
@@ -35,7 +35,7 @@ mixin _$ValueFailure<T> {
     TResult Function(T failedValue)? shortPassword,
     TResult Function()? emptyPassword,
     TResult Function(T failedValue, int maxLength)? exceedingLength,
-    TResult Function(T failedValue)? empty,
+    TResult Function()? empty,
     TResult Function(T failedValue)? multiLine,
     TResult Function(T failedValue, int maxLength)? listTooLong,
   }) =>
@@ -47,7 +47,7 @@ mixin _$ValueFailure<T> {
     TResult Function(T failedValue)? shortPassword,
     TResult Function()? emptyPassword,
     TResult Function(T failedValue, int maxLength)? exceedingLength,
-    TResult Function(T failedValue)? empty,
+    TResult Function()? empty,
     TResult Function(T failedValue)? multiLine,
     TResult Function(T failedValue, int maxLength)? listTooLong,
     required TResult orElse(),
@@ -180,7 +180,7 @@ class _$InvalidEmail<T> implements InvalidEmail<T> {
     required TResult Function(T failedValue) shortPassword,
     required TResult Function() emptyPassword,
     required TResult Function(T failedValue, int maxLength) exceedingLength,
-    required TResult Function(T failedValue) empty,
+    required TResult Function() empty,
     required TResult Function(T failedValue) multiLine,
     required TResult Function(T failedValue, int maxLength) listTooLong,
   }) {
@@ -195,7 +195,7 @@ class _$InvalidEmail<T> implements InvalidEmail<T> {
     TResult Function(T failedValue)? shortPassword,
     TResult Function()? emptyPassword,
     TResult Function(T failedValue, int maxLength)? exceedingLength,
-    TResult Function(T failedValue)? empty,
+    TResult Function()? empty,
     TResult Function(T failedValue)? multiLine,
     TResult Function(T failedValue, int maxLength)? listTooLong,
   }) {
@@ -210,7 +210,7 @@ class _$InvalidEmail<T> implements InvalidEmail<T> {
     TResult Function(T failedValue)? shortPassword,
     TResult Function()? emptyPassword,
     TResult Function(T failedValue, int maxLength)? exceedingLength,
-    TResult Function(T failedValue)? empty,
+    TResult Function()? empty,
     TResult Function(T failedValue)? multiLine,
     TResult Function(T failedValue, int maxLength)? listTooLong,
     required TResult orElse(),
@@ -327,7 +327,7 @@ class _$EmptyEmail<T> implements EmptyEmail<T> {
     required TResult Function(T failedValue) shortPassword,
     required TResult Function() emptyPassword,
     required TResult Function(T failedValue, int maxLength) exceedingLength,
-    required TResult Function(T failedValue) empty,
+    required TResult Function() empty,
     required TResult Function(T failedValue) multiLine,
     required TResult Function(T failedValue, int maxLength) listTooLong,
   }) {
@@ -342,7 +342,7 @@ class _$EmptyEmail<T> implements EmptyEmail<T> {
     TResult Function(T failedValue)? shortPassword,
     TResult Function()? emptyPassword,
     TResult Function(T failedValue, int maxLength)? exceedingLength,
-    TResult Function(T failedValue)? empty,
+    TResult Function()? empty,
     TResult Function(T failedValue)? multiLine,
     TResult Function(T failedValue, int maxLength)? listTooLong,
   }) {
@@ -357,7 +357,7 @@ class _$EmptyEmail<T> implements EmptyEmail<T> {
     TResult Function(T failedValue)? shortPassword,
     TResult Function()? emptyPassword,
     TResult Function(T failedValue, int maxLength)? exceedingLength,
-    TResult Function(T failedValue)? empty,
+    TResult Function()? empty,
     TResult Function(T failedValue)? multiLine,
     TResult Function(T failedValue, int maxLength)? listTooLong,
     required TResult orElse(),
@@ -493,7 +493,7 @@ class _$ShortPassword<T> implements ShortPassword<T> {
     required TResult Function(T failedValue) shortPassword,
     required TResult Function() emptyPassword,
     required TResult Function(T failedValue, int maxLength) exceedingLength,
-    required TResult Function(T failedValue) empty,
+    required TResult Function() empty,
     required TResult Function(T failedValue) multiLine,
     required TResult Function(T failedValue, int maxLength) listTooLong,
   }) {
@@ -508,7 +508,7 @@ class _$ShortPassword<T> implements ShortPassword<T> {
     TResult Function(T failedValue)? shortPassword,
     TResult Function()? emptyPassword,
     TResult Function(T failedValue, int maxLength)? exceedingLength,
-    TResult Function(T failedValue)? empty,
+    TResult Function()? empty,
     TResult Function(T failedValue)? multiLine,
     TResult Function(T failedValue, int maxLength)? listTooLong,
   }) {
@@ -523,7 +523,7 @@ class _$ShortPassword<T> implements ShortPassword<T> {
     TResult Function(T failedValue)? shortPassword,
     TResult Function()? emptyPassword,
     TResult Function(T failedValue, int maxLength)? exceedingLength,
-    TResult Function(T failedValue)? empty,
+    TResult Function()? empty,
     TResult Function(T failedValue)? multiLine,
     TResult Function(T failedValue, int maxLength)? listTooLong,
     required TResult orElse(),
@@ -640,7 +640,7 @@ class _$EmptyPassword<T> implements EmptyPassword<T> {
     required TResult Function(T failedValue) shortPassword,
     required TResult Function() emptyPassword,
     required TResult Function(T failedValue, int maxLength) exceedingLength,
-    required TResult Function(T failedValue) empty,
+    required TResult Function() empty,
     required TResult Function(T failedValue) multiLine,
     required TResult Function(T failedValue, int maxLength) listTooLong,
   }) {
@@ -655,7 +655,7 @@ class _$EmptyPassword<T> implements EmptyPassword<T> {
     TResult Function(T failedValue)? shortPassword,
     TResult Function()? emptyPassword,
     TResult Function(T failedValue, int maxLength)? exceedingLength,
-    TResult Function(T failedValue)? empty,
+    TResult Function()? empty,
     TResult Function(T failedValue)? multiLine,
     TResult Function(T failedValue, int maxLength)? listTooLong,
   }) {
@@ -670,7 +670,7 @@ class _$EmptyPassword<T> implements EmptyPassword<T> {
     TResult Function(T failedValue)? shortPassword,
     TResult Function()? emptyPassword,
     TResult Function(T failedValue, int maxLength)? exceedingLength,
-    TResult Function(T failedValue)? empty,
+    TResult Function()? empty,
     TResult Function(T failedValue)? multiLine,
     TResult Function(T failedValue, int maxLength)? listTooLong,
     required TResult orElse(),
@@ -817,7 +817,7 @@ class _$ExceedingLength<T> implements ExceedingLength<T> {
     required TResult Function(T failedValue) shortPassword,
     required TResult Function() emptyPassword,
     required TResult Function(T failedValue, int maxLength) exceedingLength,
-    required TResult Function(T failedValue) empty,
+    required TResult Function() empty,
     required TResult Function(T failedValue) multiLine,
     required TResult Function(T failedValue, int maxLength) listTooLong,
   }) {
@@ -832,7 +832,7 @@ class _$ExceedingLength<T> implements ExceedingLength<T> {
     TResult Function(T failedValue)? shortPassword,
     TResult Function()? emptyPassword,
     TResult Function(T failedValue, int maxLength)? exceedingLength,
-    TResult Function(T failedValue)? empty,
+    TResult Function()? empty,
     TResult Function(T failedValue)? multiLine,
     TResult Function(T failedValue, int maxLength)? listTooLong,
   }) {
@@ -847,7 +847,7 @@ class _$ExceedingLength<T> implements ExceedingLength<T> {
     TResult Function(T failedValue)? shortPassword,
     TResult Function()? emptyPassword,
     TResult Function(T failedValue, int maxLength)? exceedingLength,
-    TResult Function(T failedValue)? empty,
+    TResult Function()? empty,
     TResult Function(T failedValue)? multiLine,
     TResult Function(T failedValue, int maxLength)? listTooLong,
     required TResult orElse(),
@@ -924,7 +924,6 @@ abstract class ExceedingLength<T> implements ValueFailure<T> {
 abstract class _$$EmptyCopyWith<T, $Res> {
   factory _$$EmptyCopyWith(_$Empty<T> value, $Res Function(_$Empty<T>) then) =
       __$$EmptyCopyWithImpl<T, $Res>;
-  $Res call({T failedValue});
 }
 
 /// @nodoc
@@ -935,50 +934,26 @@ class __$$EmptyCopyWithImpl<T, $Res> extends _$ValueFailureCopyWithImpl<T, $Res>
 
   @override
   _$Empty<T> get _value => super._value as _$Empty<T>;
-
-  @override
-  $Res call({
-    Object? failedValue = freezed,
-  }) {
-    return _then(_$Empty<T>(
-      failedValue: failedValue == freezed
-          ? _value.failedValue
-          : failedValue // ignore: cast_nullable_to_non_nullable
-              as T,
-    ));
-  }
 }
 
 /// @nodoc
 
 class _$Empty<T> implements Empty<T> {
-  const _$Empty({required this.failedValue});
-
-  @override
-  final T failedValue;
+  const _$Empty();
 
   @override
   String toString() {
-    return 'ValueFailure<$T>.empty(failedValue: $failedValue)';
+    return 'ValueFailure<$T>.empty()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$Empty<T> &&
-            const DeepCollectionEquality()
-                .equals(other.failedValue, failedValue));
+        (other.runtimeType == runtimeType && other is _$Empty<T>);
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(failedValue));
-
-  @JsonKey(ignore: true)
-  @override
-  _$$EmptyCopyWith<T, _$Empty<T>> get copyWith =>
-      __$$EmptyCopyWithImpl<T, _$Empty<T>>(this, _$identity);
+  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
@@ -988,11 +963,11 @@ class _$Empty<T> implements Empty<T> {
     required TResult Function(T failedValue) shortPassword,
     required TResult Function() emptyPassword,
     required TResult Function(T failedValue, int maxLength) exceedingLength,
-    required TResult Function(T failedValue) empty,
+    required TResult Function() empty,
     required TResult Function(T failedValue) multiLine,
     required TResult Function(T failedValue, int maxLength) listTooLong,
   }) {
-    return empty(failedValue);
+    return empty();
   }
 
   @override
@@ -1003,11 +978,11 @@ class _$Empty<T> implements Empty<T> {
     TResult Function(T failedValue)? shortPassword,
     TResult Function()? emptyPassword,
     TResult Function(T failedValue, int maxLength)? exceedingLength,
-    TResult Function(T failedValue)? empty,
+    TResult Function()? empty,
     TResult Function(T failedValue)? multiLine,
     TResult Function(T failedValue, int maxLength)? listTooLong,
   }) {
-    return empty?.call(failedValue);
+    return empty?.call();
   }
 
   @override
@@ -1018,13 +993,13 @@ class _$Empty<T> implements Empty<T> {
     TResult Function(T failedValue)? shortPassword,
     TResult Function()? emptyPassword,
     TResult Function(T failedValue, int maxLength)? exceedingLength,
-    TResult Function(T failedValue)? empty,
+    TResult Function()? empty,
     TResult Function(T failedValue)? multiLine,
     TResult Function(T failedValue, int maxLength)? listTooLong,
     required TResult orElse(),
   }) {
     if (empty != null) {
-      return empty(failedValue);
+      return empty();
     }
     return orElse();
   }
@@ -1080,12 +1055,7 @@ class _$Empty<T> implements Empty<T> {
 }
 
 abstract class Empty<T> implements ValueFailure<T> {
-  const factory Empty({required final T failedValue}) = _$Empty<T>;
-
-  T get failedValue => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  _$$EmptyCopyWith<T, _$Empty<T>> get copyWith =>
-      throw _privateConstructorUsedError;
+  const factory Empty() = _$Empty<T>;
 }
 
 /// @nodoc
@@ -1159,7 +1129,7 @@ class _$MultiLine<T> implements MultiLine<T> {
     required TResult Function(T failedValue) shortPassword,
     required TResult Function() emptyPassword,
     required TResult Function(T failedValue, int maxLength) exceedingLength,
-    required TResult Function(T failedValue) empty,
+    required TResult Function() empty,
     required TResult Function(T failedValue) multiLine,
     required TResult Function(T failedValue, int maxLength) listTooLong,
   }) {
@@ -1174,7 +1144,7 @@ class _$MultiLine<T> implements MultiLine<T> {
     TResult Function(T failedValue)? shortPassword,
     TResult Function()? emptyPassword,
     TResult Function(T failedValue, int maxLength)? exceedingLength,
-    TResult Function(T failedValue)? empty,
+    TResult Function()? empty,
     TResult Function(T failedValue)? multiLine,
     TResult Function(T failedValue, int maxLength)? listTooLong,
   }) {
@@ -1189,7 +1159,7 @@ class _$MultiLine<T> implements MultiLine<T> {
     TResult Function(T failedValue)? shortPassword,
     TResult Function()? emptyPassword,
     TResult Function(T failedValue, int maxLength)? exceedingLength,
-    TResult Function(T failedValue)? empty,
+    TResult Function()? empty,
     TResult Function(T failedValue)? multiLine,
     TResult Function(T failedValue, int maxLength)? listTooLong,
     required TResult orElse(),
@@ -1340,7 +1310,7 @@ class _$ListTooLong<T> implements ListTooLong<T> {
     required TResult Function(T failedValue) shortPassword,
     required TResult Function() emptyPassword,
     required TResult Function(T failedValue, int maxLength) exceedingLength,
-    required TResult Function(T failedValue) empty,
+    required TResult Function() empty,
     required TResult Function(T failedValue) multiLine,
     required TResult Function(T failedValue, int maxLength) listTooLong,
   }) {
@@ -1355,7 +1325,7 @@ class _$ListTooLong<T> implements ListTooLong<T> {
     TResult Function(T failedValue)? shortPassword,
     TResult Function()? emptyPassword,
     TResult Function(T failedValue, int maxLength)? exceedingLength,
-    TResult Function(T failedValue)? empty,
+    TResult Function()? empty,
     TResult Function(T failedValue)? multiLine,
     TResult Function(T failedValue, int maxLength)? listTooLong,
   }) {
@@ -1370,7 +1340,7 @@ class _$ListTooLong<T> implements ListTooLong<T> {
     TResult Function(T failedValue)? shortPassword,
     TResult Function()? emptyPassword,
     TResult Function(T failedValue, int maxLength)? exceedingLength,
-    TResult Function(T failedValue)? empty,
+    TResult Function()? empty,
     TResult Function(T failedValue)? multiLine,
     TResult Function(T failedValue, int maxLength)? listTooLong,
     required TResult orElse(),

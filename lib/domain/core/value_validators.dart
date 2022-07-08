@@ -22,9 +22,7 @@ Either<ValueFailure<String>, String> validateStringNotEmpty(
   if (input.isNotEmpty) {
     return right(input);
   } else {
-    return left(
-      ValueFailure.empty(failedValue: input),
-    );
+    return left(const ValueFailure.empty());
   }
 }
 

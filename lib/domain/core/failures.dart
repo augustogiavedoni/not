@@ -21,9 +21,7 @@ class ValueFailure<T> with _$ValueFailure<T> {
     required int maxLength,
   }) = ExceedingLength<T>;
 
-  const factory ValueFailure.empty({
-    required T failedValue,
-  }) = Empty<T>;
+  const factory ValueFailure.empty() = Empty<T>;
 
   const factory ValueFailure.multiLine({
     required T failedValue,
