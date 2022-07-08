@@ -1,12 +1,13 @@
-import 'dart:io';
-
-import 'package:flutter/cupertino.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../application/auth/auth_bloc.dart';
 import '../../../application/auth/sign_up_form/sign_up_form_bloc.dart';
 import '../../../domain/auth/auth_failure.dart';
+import '../../common_widgets/custom_dialog.dart';
 import '../../core/theme/app_colors.dart';
+import '../../routes/router.gr.dart';
 
 class SignUpForm extends StatefulWidget {
   const SignUpForm({Key? key}) : super(key: key);
@@ -31,7 +32,11 @@ class _SignUpFormState extends State<SignUpForm> {
           (either) => either.fold(
             (failure) => _showFailureDialog(context, failure),
             (_) {
-              //TODO: implementar navegación
+              context.router.replace(const NotesOverviewScreenRoute());
+
+              context
+                  .read<AuthBloc>()
+                  .add(const AuthEvent.authCheckedRequested());
             },
           ),
         );
@@ -306,23 +311,16 @@ class _SignUpFormState extends State<SignUpForm> {
     );
   }
 
-  Future<dynamic> _showFailureDialog(
+  Future<void> _showFailureDialog(
     BuildContext context,
     AuthFailure failure,
   ) {
-    final Text title = Text("Something happened");
-    final Text content = Text(
-      failure.map(
-        cancelledByUser: (_) => "Operation cancelled by user",
-        serverError: (_) => "Woops! Something failed... Try again!",
-        emailAlreadyInUse: (_) => "The email is already in use",
-        invalidEmailAndPasswordCombination: (_) =>
-            "The combination of the email and the password is invalid",
-      ),
-    );
-    final TextButton button = TextButton(
-      onPressed: () => Navigator.of(context).pop(),
-      child: Text("Go back"),
+    final String description = failure.map(
+      cancelledByUser: (_) => "Operation cancelled by user",
+      serverError: (_) => "Woops! Something failed... Try again!",
+      emailAlreadyInUse: (_) => "The email is already in use",
+      invalidEmailAndPasswordCombination: (_) =>
+          "The combination of the email and the password is invalid",
     );
 
     setState(() {
@@ -331,17 +329,15 @@ class _SignUpFormState extends State<SignUpForm> {
 
     return showDialog(
       context: context,
-      builder: (context) => Platform.isIOS
-          ? CupertinoAlertDialog(
-              title: title,
-              content: content,
-              actions: [button],
-            )
-          : AlertDialog(
-              title: title,
-              content: content,
-              actions: [button],
-            ),
+      builder: (context) {
+        return CustomDialog(
+          title: "Something happened",
+          description: description,
+          mainButtonText: "Go back",
+          mainButtonFunctionality: () => Navigator.of(context).pop(),
+          dialogStatus: DialogStatus.error,
+        );
+      },
     );
   }
 }
