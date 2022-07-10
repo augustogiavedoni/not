@@ -10,6 +10,7 @@ import '../../../injection.dart';
 import '../../common_widgets/custom_dialog.dart';
 import '../../routes/router.gr.dart';
 import 'widgets/notes_overview_body.dart';
+import 'widgets/uncompleted_switch.dart';
 
 class NotesOverviewScreen extends StatelessWidget {
   const NotesOverviewScreen({Key? key}) : super(key: key);
@@ -58,12 +59,13 @@ class NotesOverviewScreen extends StatelessWidget {
                   ),
             ),
             actions: const <Widget>[
-              CircleAvatar(
-                backgroundColor: Colors.amber,
-              ),
-              SizedBox(
-                width: 10,
-              ),
+              UncompletedSwitch(),
+              // CircleAvatar(
+              //   backgroundColor: Colors.amber,
+              // ),
+              // SizedBox(
+              //   width: 10,
+              // ),
             ],
             elevation: 0,
             backgroundColor: const Color(0XFF171D26),
