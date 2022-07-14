@@ -25,32 +25,60 @@ class NoteWatcherBloc extends Bloc<NoteWatcherEvent, NoteWatcherState> {
     this._noteRepository,
   ) : super(const NoteWatcherState.initial()) {
     on<NoteWatcherEvent>((event, emit) async {
-      if (event is WatchAllStarted) {
-        emit(const NoteWatcherState.loadInProgress());
+      await event.map<FutureOr<void>>(
+        watchAllStarted: (event) {
+          emit(const NoteWatcherState.loadInProgress());
 
-        _noteStreamSubscription = _noteRepository.watchAll().listen(
-              (failureOrNotes) => add(
-                NoteWatcherEvent.notesReceived(failureOrNotes),
-              ),
-            );
-      } else if (event is WatchUncompletedStarted) {
-        emit(const NoteWatcherState.loadInProgress());
+          _noteStreamSubscription = _noteRepository.watchAll().listen(
+                (failureOrNotes) => add(
+                  NoteWatcherEvent.notesReceived(failureOrNotes),
+                ),
+              );
+        },
+        watchUncompletedStarted: (event) async {
+          emit(const NoteWatcherState.loadInProgress());
 
-        await _noteStreamSubscription!.cancel();
+          await _noteStreamSubscription!.cancel();
 
-        _noteStreamSubscription = _noteRepository.watchUncompleted().listen(
-              (failureOrNotes) => add(
-                NoteWatcherEvent.notesReceived(failureOrNotes),
-              ),
-            );
-      } else if (event is NotesReceived) {
-        emit(
+          _noteStreamSubscription = _noteRepository.watchUncompleted().listen(
+                (failureOrNotes) => add(
+                  NoteWatcherEvent.notesReceived(failureOrNotes),
+                ),
+              );
+        },
+        notesReceived: (event) => emit(
           event.failureOrNotes.fold(
             (failure) => NoteWatcherState.loadFailure(failure),
             (notes) => NoteWatcherState.loadSuccess(notes),
           ),
-        );
-      }
+        ),
+      );
+      // if (event is WatchAllStarted) {
+      //   emit(const NoteWatcherState.loadInProgress());
+
+      //   _noteStreamSubscription = _noteRepository.watchAll().listen(
+      //         (failureOrNotes) => add(
+      //           NoteWatcherEvent.notesReceived(failureOrNotes),
+      //         ),
+      //       );
+      // } else if (event is WatchUncompletedStarted) {
+      //   emit(const NoteWatcherState.loadInProgress());
+
+      //   await _noteStreamSubscription!.cancel();
+
+      //   _noteStreamSubscription = _noteRepository.watchUncompleted().listen(
+      //         (failureOrNotes) => add(
+      //           NoteWatcherEvent.notesReceived(failureOrNotes),
+      //         ),
+      //       );
+      // } else if (event is NotesReceived) {
+      //   emit(
+      //     event.failureOrNotes.fold(
+      //       (failure) => NoteWatcherState.loadFailure(failure),
+      //       (notes) => NoteWatcherState.loadSuccess(notes),
+      //     ),
+      //   );
+      // }
     });
   }
 

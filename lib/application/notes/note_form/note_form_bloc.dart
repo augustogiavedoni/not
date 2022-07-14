@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:ui';
 
 import 'package:bloc/bloc.dart';
@@ -23,8 +24,8 @@ class NoteFormBloc extends Bloc<NoteFormEvent, NoteFormState> {
   final INoteRepository _noteRepository;
 
   NoteFormBloc(this._noteRepository) : super(NoteFormState.initial()) {
-    on<NoteFormEvent>((event, emit) {
-      event.map(
+    on<NoteFormEvent>((event, emit) async {
+      await event.map<FutureOr<void>>(
         initialized: (event) => emit(
           event.initialNoteOption.fold(
             () => state,

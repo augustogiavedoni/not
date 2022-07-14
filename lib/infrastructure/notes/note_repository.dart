@@ -27,7 +27,7 @@ class NoteRepository implements INoteRepository {
       await userDoc.noteCollection.doc(noteDTO.id).set(noteDTO.toJson());
 
       return right(unit);
-    } on PlatformException catch (exception) {
+    } on FirebaseException catch (exception) {
       if (exception.message!.contains("PERMISSION_DENIED")) {
         return left(const NoteFailure.insufficientPermission());
       } else {
@@ -45,7 +45,7 @@ class NoteRepository implements INoteRepository {
       await userDoc.noteCollection.doc(noteId).delete();
 
       return right(unit);
-    } on PlatformException catch (exception) {
+    } on FirebaseException catch (exception) {
       if (exception.message!.contains("PERMISSION_DENIED")) {
         return left(const NoteFailure.insufficientPermission());
       } else if (exception.message!.contains("NOT_FOUND")) {
@@ -65,7 +65,7 @@ class NoteRepository implements INoteRepository {
       await userDoc.noteCollection.doc(noteDTO.id).update(noteDTO.toJson());
 
       return right(unit);
-    } on PlatformException catch (exception) {
+    } on FirebaseException catch (exception) {
       if (exception.message!.contains("PERMISSION_DENIED")) {
         return left(const NoteFailure.insufficientPermission());
       } else if (exception.message!.contains("NOT_FOUND")) {
@@ -90,7 +90,7 @@ class NoteRepository implements INoteRepository {
           ),
         )
         .onErrorReturnWith((error, _) {
-      if (error is PlatformException &&
+      if (error is FirebaseException &&
           error.message!.contains("PERMISSION_DENIED")) {
         return left(const NoteFailure.insufficientPermission());
       } else {
@@ -120,7 +120,7 @@ class NoteRepository implements INoteRepository {
           ),
         )
         .onErrorReturnWith((error, _) {
-      if (error is PlatformException &&
+      if (error is FirebaseException &&
           error.message!.contains("PERMISSION_DENIED")) {
         return left(const NoteFailure.insufficientPermission());
       } else {

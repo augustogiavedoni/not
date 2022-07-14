@@ -10,10 +10,10 @@ import 'injection.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  configureInjection(Environment.prod);
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
   await FirebaseAppCheck.instance.activate();
-  configureInjection(Environment.prod);
   runApp(AppWidget());
 }

@@ -36,15 +36,12 @@ class NoteFormScreen extends StatelessWidget {
         listener: (context, state) {
           state.saveFailureOrSucessOption.fold(
             () {},
-            (either) {
-              either.fold(
-                (failure) => _showFailureDialog(context, failure),
-                (_) => context.router.popUntil(
-                  (route) =>
-                      route.settings.name == NotesOverviewScreenRoute.name,
-                ),
-              );
-            },
+            (either) => either.fold(
+              (failure) => _showFailureDialog(context, failure),
+              (_) => context.router.popUntil(
+                (route) => route.settings.name == NotesOverviewScreenRoute.name,
+              ),
+            ),
           );
         },
         buildWhen: (previous, current) => previous.isSaving != current.isSaving,
