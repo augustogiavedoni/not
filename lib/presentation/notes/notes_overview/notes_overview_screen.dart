@@ -58,6 +58,7 @@ class NotesOverviewScreen extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                   ),
             ),
+            centerTitle: false,
             actions: const <Widget>[
               UncompletedSwitch(),
               // CircleAvatar(
@@ -82,7 +83,11 @@ class NotesOverviewScreen extends StatelessWidget {
             // ],
           ),
           floatingActionButton: FloatingActionButton(
-            onPressed: () {},
+            onPressed: () => context.router.push(
+              NoteFormScreenRoute(
+                note: null,
+              ),
+            ),
             child: const Icon(Icons.add),
           ),
           body: const NotesOverviewBody(),
