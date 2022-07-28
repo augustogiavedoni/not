@@ -24,9 +24,12 @@ class OptionsMenu extends StatelessWidget {
           return Container(
             width: size.width,
             height: size.height * 0.25,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20),
-              color: const Color(0XFF171C26),
+            decoration: const BoxDecoration(
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(20),
+                topRight: Radius.circular(20),
+              ),
+              color: Color(0XFF171C26),
             ),
             child: SingleChildScrollView(
               child: Column(
