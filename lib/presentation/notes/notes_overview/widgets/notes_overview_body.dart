@@ -40,7 +40,12 @@ class NotesOverviewBody extends StatelessWidget {
                   if (note.failureOption.isSome()) {
                     return NoteWithErrorCard(note: note);
                   } else {
-                    return NoteCard(note: note);
+                    return NoteCard(
+                      key: ValueKey(
+                        note.id.getOrCrash(),
+                      ),
+                      note: note,
+                    );
                   }
                 }),
               ),
