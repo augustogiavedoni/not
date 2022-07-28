@@ -20,7 +20,6 @@ NoteDTO _$NoteDTOFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$NoteDTO {
-// ignore: invalid_annotation_target
   @JsonKey(ignore: true)
   String? get id => throw _privateConstructorUsedError;
   String get body => throw _privateConstructorUsedError;
@@ -144,7 +143,8 @@ class __$$_NoteDTOCopyWithImpl<$Res> extends _$NoteDTOCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(explicitToJson: true)
 class _$_NoteDTO extends _NoteDTO {
   const _$_NoteDTO(
       {@JsonKey(ignore: true) this.id,
@@ -158,7 +158,6 @@ class _$_NoteDTO extends _NoteDTO {
   factory _$_NoteDTO.fromJson(Map<String, dynamic> json) =>
       _$$_NoteDTOFromJson(json);
 
-// ignore: invalid_annotation_target
   @override
   @JsonKey(ignore: true)
   final String? id;
@@ -229,7 +228,7 @@ abstract class _NoteDTO extends NoteDTO {
 
   factory _NoteDTO.fromJson(Map<String, dynamic> json) = _$_NoteDTO.fromJson;
 
-  @override // ignore: invalid_annotation_target
+  @override
   @JsonKey(ignore: true)
   String? get id => throw _privateConstructorUsedError;
   @override

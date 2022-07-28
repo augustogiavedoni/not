@@ -1,10 +1,16 @@
+import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:kt_dart/kt.dart';
 
 import '../../../../domain/core/value_objects/unique_id.dart';
 import '../../../../domain/notes/entities/todo_item.dart';
 import '../../../../domain/notes/value_objects/todo_name.dart';
 
 part 'todo_item_presentation_classes.freezed.dart';
+
+class Todos extends ValueNotifier<KtList<TodoItemPrimitive>> {
+  Todos() : super(emptyList<TodoItemPrimitive>());
+}
 
 @freezed
 abstract class TodoItemPrimitive implements _$TodoItemPrimitive {

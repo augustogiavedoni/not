@@ -111,7 +111,8 @@ class __$$_TodoItemPrimitiveCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_TodoItemPrimitive extends _TodoItemPrimitive {
+class _$_TodoItemPrimitive extends _TodoItemPrimitive
+    with DiagnosticableTreeMixin {
   const _$_TodoItemPrimitive(
       {required this.id, required this.name, required this.completed})
       : super._();
@@ -124,8 +125,18 @@ class _$_TodoItemPrimitive extends _TodoItemPrimitive {
   final bool completed;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'TodoItemPrimitive(id: $id, name: $name, completed: $completed)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'TodoItemPrimitive'))
+      ..add(DiagnosticsProperty('id', id))
+      ..add(DiagnosticsProperty('name', name))
+      ..add(DiagnosticsProperty('completed', completed));
   }
 
   @override

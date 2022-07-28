@@ -80,15 +80,17 @@ class NoteCard extends StatelessWidget {
                         const SizedBox(
                           width: 10,
                         ),
-                        Text(
-                          todo.name.getOrCrash(),
-                          style: TextStyle(
-                            color: _getTextColor(
-                              noteColor: note.color.getOrCrash(),
+                        Expanded(
+                          child: Text(
+                            todo.name.getOrCrash(),
+                            style: TextStyle(
+                              color: _getTextColor(
+                                noteColor: note.color.getOrCrash(),
+                              ),
+                              decoration: todo.completed
+                                  ? TextDecoration.lineThrough
+                                  : null,
                             ),
-                            decoration: todo.completed
-                                ? TextDecoration.lineThrough
-                                : null,
                           ),
                         ),
                       ],
