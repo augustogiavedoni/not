@@ -29,6 +29,10 @@ At the moment, with not ! you can:
 
 not ! uses **Firebase** as the back-end provider. Services such as **Authentication** and **Firestore** help not ! run as expected. Maybe in the future I'll implement my own back-end service with Spring Boot using AWS as the service provider (stay tuned for this).
 
+## Reported issues
+
+You can see the reported issues [here](https://github.com/augiavedoni/not/issues)
+
 ## Important!
 
 Please, have in mind that this is an ongoing project and it may be subject to changes. Even bugs may be present that I'm not aware of. If you have ideas or suggestions, please do not hesitate to submit a PR or even to contact me.
