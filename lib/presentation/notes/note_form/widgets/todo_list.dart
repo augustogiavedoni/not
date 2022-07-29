@@ -63,20 +63,6 @@ class TodoList extends StatelessWidget {
                 );
           },
         ),
-        // return ListView.separated(
-        //   shrinkWrap: true,
-        //   physics: const NeverScrollableScrollPhysics(),
-        //   itemCount: todos.value.size,
-        //   itemBuilder: (context, index) => TodoTile(
-        //     key: ValueKey(
-        //       context.todos[index].id,
-        //     ),
-        //     index: index,
-        //   ),
-        //   separatorBuilder: (_, __) => const SizedBox(
-        //     height: 5,
-        //   ),
-        // );
       ),
     );
   }
