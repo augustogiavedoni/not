@@ -11,7 +11,6 @@ import '../../common_widgets/custom_dialog.dart';
 import '../../routes/router.gr.dart';
 import 'widgets/avatar_options.dart';
 import 'widgets/notes_overview_body.dart';
-import 'widgets/uncompleted_switch.dart';
 
 class NotesOverviewScreen extends StatelessWidget {
   const NotesOverviewScreen({Key? key}) : super(key: key);
