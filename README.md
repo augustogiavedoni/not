@@ -39,4 +39,4 @@ You can see the reported issues [here](https://github.com/augiavedoni/not/issues
 
 ## Important!
 
-Please, have in mind that this is an ongoing project and it may be subject to changes. Even bugs may be present that I'm not aware of. If you have ideas or suggestions, please do not hesitate to submit a PR or even to contact me.
+Please, have in mind that this is an ongoing project and it may be subject to changes. Even bugs may be present that I'm not aware of. If you have ideas or suggestions, please do not hesitate to check the [Discussions](https://github.com/augiavedoni/not/discussions) section.
