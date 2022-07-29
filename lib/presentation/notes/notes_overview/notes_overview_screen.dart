@@ -36,7 +36,7 @@ class NotesOverviewScreen extends StatelessWidget {
               unauthenticated: (value) => context.router.replace(
                 const SignInScreenRoute(),
               ),
-              orElse: () {},
+              orElse: () => null,
             ),
           ),
           BlocListener<NoteActorBloc, NoteActorState>(
@@ -45,7 +45,7 @@ class NotesOverviewScreen extends StatelessWidget {
                 context,
                 failure.noteFailure,
               ),
-              orElse: () {},
+              orElse: () => null,
             ),
           ),
         ],
