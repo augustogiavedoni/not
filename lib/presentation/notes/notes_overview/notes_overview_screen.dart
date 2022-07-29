@@ -9,6 +9,7 @@ import '../../../domain/notes/note_failure.dart';
 import '../../../injection.dart';
 import '../../common_widgets/custom_dialog.dart';
 import '../../routes/router.gr.dart';
+import 'widgets/avatar_options.dart';
 import 'widgets/notes_overview_body.dart';
 import 'widgets/uncompleted_switch.dart';
 
@@ -60,27 +61,11 @@ class NotesOverviewScreen extends StatelessWidget {
             ),
             centerTitle: false,
             actions: const <Widget>[
-              UncompletedSwitch(),
-              // CircleAvatar(
-              //   backgroundColor: Colors.amber,
-              // ),
-              // SizedBox(
-              //   width: 10,
-              // ),
+              // UncompletedSwitch(),
+              AvatarOptions(),
             ],
             elevation: 0,
             backgroundColor: const Color(0XFF171D26),
-            // leading: IconButton(
-            //   icon: Icon(Icons.exit_to_app),
-            //   onPressed: () =>
-            //       context.read<AuthBloc>().add(const AuthEvent.signedOut()),
-            // ),
-            // actions: <Widget>[
-            //   IconButton(
-            //     icon: Icon(Icons.indeterminate_check_box),
-            //     onPressed: () {},
-            //   ),
-            // ],
           ),
           floatingActionButton: FloatingActionButton(
             onPressed: () => context.router.push(
