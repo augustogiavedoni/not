@@ -1,9 +1,11 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
 import '../../../../application/auth/auth_bloc.dart';
 import '../../../../application/notes/note_watcher/note_watcher_bloc.dart';
+import '../../../routes/router.gr.dart';
 
 class AvatarOptions extends HookWidget {
   const AvatarOptions({Key? key}) : super(key: key);
@@ -50,7 +52,9 @@ class AvatarOptions extends HookWidget {
               icon: Icons.settings_rounded,
               text: "Settings",
             ),
-            onTap: () {},
+            onTap: () => context.router.push(
+              const SettingsScreenRoute(),
+            ),
           ),
           PopupMenuItem(
             child: _buildMenuOptionRow(
