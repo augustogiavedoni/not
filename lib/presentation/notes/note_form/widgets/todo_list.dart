@@ -19,7 +19,15 @@ class TodoList extends StatelessWidget {
           previous.note.todos.isFull != current.note.todos.isFull,
       listener: (context, state) {
         if (state.note.todos.isFull) {
-          //TODO: show SnackBar
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: const Text("Want longer lists? Activate premium!"),
+              action: SnackBarAction(
+                label: "Buy now",
+                onPressed: () {},
+              ),
+            ),
+          );
         }
       },
       child: Consumer<Todos>(
