@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
@@ -90,10 +91,16 @@ class TodoTile extends HookWidget {
             ),
           ),
           trailing: const Handle(
-            child: Icon(Icons.list),
+            child: Icon(Icons.menu_rounded),
           ),
           title: TextFormField(
+            enabled: !todo.completed,
             controller: textEditingController,
+            style: todo.completed
+                ? const TextStyle(
+                    decoration: TextDecoration.lineThrough,
+                  )
+                : null,
             decoration: const InputDecoration(
               hintText: "To-Do",
               border: InputBorder.none,

@@ -80,7 +80,7 @@ class NoteCard extends StatelessWidget {
                         const SizedBox(
                           width: 10,
                         ),
-                        Expanded(
+                        Flexible(
                           child: Text(
                             todo.name.getOrCrash(),
                             style: TextStyle(
@@ -90,6 +90,7 @@ class NoteCard extends StatelessWidget {
                               decoration: todo.completed
                                   ? TextDecoration.lineThrough
                                   : null,
+                              overflow: TextOverflow.ellipsis,
                             ),
                           ),
                         ),

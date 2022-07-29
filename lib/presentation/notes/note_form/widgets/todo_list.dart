@@ -24,6 +24,7 @@ class TodoList extends StatelessWidget {
               content: const Text("Want longer lists? Activate premium!"),
               action: SnackBarAction(
                 label: "Buy now",
+                textColor: const Color(0XFF3E70FF),
                 onPressed: () {},
               ),
             ),
