@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:implicitly_animated_reorderable_list_2/implicitly_animated_reorderable_list_2.dart';
+import 'package:kt_dart/kt.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../application/notes/note_form/note_form_bloc.dart';
@@ -21,22 +23,52 @@ class TodoList extends StatelessWidget {
         }
       },
       child: Consumer<Todos>(
-        builder: (context, todos, child) {
-          return ListView.separated(
-            shrinkWrap: true,
-            physics: const NeverScrollableScrollPhysics(),
-            itemCount: todos.value.size,
-            itemBuilder: (context, index) => TodoTile(
-              key: ValueKey(
-                context.todos[index].id,
+        builder: (context, todos, child) =>
+            ImplicitlyAnimatedReorderableList<TodoItemPrimitive>(
+          shrinkWrap: true,
+          removeDuration: const Duration(milliseconds: 0),
+          items: todos.value.asList(),
+          itemBuilder: (context, itemAnimation, item, index) => Reorderable(
+            key: ValueKey(item.id),
+            builder: (context, animation, inDrag) => ScaleTransition(
+              scale: Tween<double>(
+                begin: 1,
+                end: 1.05,
+              ).animate(animation),
+              child: Padding(
+                padding: const EdgeInsets.only(
+                  bottom: 5,
+                ),
+                child: TodoTile(
+                  index: index,
+                  elevation: animation.value * 4,
+                ),
               ),
-              index: index,
             ),
-            separatorBuilder: (_, __) => const SizedBox(
-              height: 5,
-            ),
-          );
-        },
+          ),
+          areItemsTheSame: (oldItem, newItem) => oldItem.id == newItem.id,
+          onReorderFinished: (item, from, to, newItems) {
+            context.todos = newItems.toImmutableList();
+
+            context.read<NoteFormBloc>().add(
+                  NoteFormEvent.todosChanged(context.todos),
+                );
+          },
+        ),
+        // return ListView.separated(
+        //   shrinkWrap: true,
+        //   physics: const NeverScrollableScrollPhysics(),
+        //   itemCount: todos.value.size,
+        //   itemBuilder: (context, index) => TodoTile(
+        //     key: ValueKey(
+        //       context.todos[index].id,
+        //     ),
+        //     index: index,
+        //   ),
+        //   separatorBuilder: (_, __) => const SizedBox(
+        //     height: 5,
+        //   ),
+        // );
       ),
     );
   }
