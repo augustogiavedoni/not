@@ -53,32 +53,6 @@ class NoteWatcherBloc extends Bloc<NoteWatcherEvent, NoteWatcherState> {
           ),
         ),
       );
-      // if (event is WatchAllStarted) {
-      //   emit(const NoteWatcherState.loadInProgress());
-
-      //   _noteStreamSubscription = _noteRepository.watchAll().listen(
-      //         (failureOrNotes) => add(
-      //           NoteWatcherEvent.notesReceived(failureOrNotes),
-      //         ),
-      //       );
-      // } else if (event is WatchUncompletedStarted) {
-      //   emit(const NoteWatcherState.loadInProgress());
-
-      //   await _noteStreamSubscription!.cancel();
-
-      //   _noteStreamSubscription = _noteRepository.watchUncompleted().listen(
-      //         (failureOrNotes) => add(
-      //           NoteWatcherEvent.notesReceived(failureOrNotes),
-      //         ),
-      //       );
-      // } else if (event is NotesReceived) {
-      //   emit(
-      //     event.failureOrNotes.fold(
-      //       (failure) => NoteWatcherState.loadFailure(failure),
-      //       (notes) => NoteWatcherState.loadSuccess(notes),
-      //     ),
-      //   );
-      // }
     });
   }
 
