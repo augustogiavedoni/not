@@ -60,8 +60,9 @@ class NoteRepository implements INoteRepository {
     try {
       final userDoc = await _firestore.userDocument();
       final noteDTO = NoteDTO.fromDomain(note);
+      final noteDTOJson = noteDTO.toJson();
 
-      await userDoc.noteCollection.doc(noteDTO.id).update(noteDTO.toJson());
+      await userDoc.noteCollection.doc(noteDTO.id).update(noteDTOJson);
 
       return right(unit);
     } on FirebaseException catch (exception) {
@@ -81,14 +82,15 @@ class NoteRepository implements INoteRepository {
     yield* userDoc.noteCollection
         .orderBy("serverTimeStamp", descending: true)
         .snapshots()
-        .map(
-          (snapshot) => right<NoteFailure, KtList<Note>>(
-            snapshot.docs
-                .map((doc) => NoteDTO.fromFirestore(doc).toDomain())
-                .toImmutableList(),
-          ),
-        )
-        .onErrorReturnWith((error, _) {
+        .map((snapshot) {
+      final docs = snapshot.docs.where((doc) => !doc.metadata.hasPendingWrites);
+
+      return right<NoteFailure, KtList<Note>>(
+        docs
+            .map((doc) => NoteDTO.fromFirestore(doc).toDomain())
+            .toImmutableList(),
+      );
+    }).onErrorReturnWith((error, _) {
       if (error is FirebaseException &&
           error.message!.contains("PERMISSION_DENIED")) {
         return left(const NoteFailure.insufficientPermission());
@@ -104,11 +106,13 @@ class NoteRepository implements INoteRepository {
     yield* userDoc.noteCollection
         .orderBy("serverTimeStamp", descending: true)
         .snapshots()
-        .map(
-          (snapshot) => snapshot.docs.map(
+        .map((snapshot) {
+          final docs = snapshot.docs.where((doc) => !doc.metadata.hasPendingWrites);
+
+          return docs.map(
             (doc) => NoteDTO.fromFirestore(doc).toDomain(),
-          ),
-        )
+          );
+        })
         .map(
           (notes) => right<NoteFailure, KtList<Note>>(
             notes
@@ -119,12 +123,12 @@ class NoteRepository implements INoteRepository {
           ),
         )
         .onErrorReturnWith((error, _) {
-      if (error is FirebaseException &&
-          error.message!.contains("PERMISSION_DENIED")) {
-        return left(const NoteFailure.insufficientPermission());
-      } else {
-        return left(const NoteFailure.unexpected());
-      }
-    });
+          if (error is FirebaseException &&
+              error.message!.contains("PERMISSION_DENIED")) {
+            return left(const NoteFailure.insufficientPermission());
+          } else {
+            return left(const NoteFailure.unexpected());
+          }
+        });
   }
 }
