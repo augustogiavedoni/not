@@ -60,9 +60,8 @@ class NoteRepository implements INoteRepository {
     try {
       final userDoc = await _firestore.userDocument();
       final noteDTO = NoteDTO.fromDomain(note);
-      final noteDTOJson = noteDTO.toJson();
 
-      await userDoc.noteCollection.doc(noteDTO.id).update(noteDTOJson);
+      await userDoc.noteCollection.doc(noteDTO.id).update(noteDTO.toJson());
 
       return right(unit);
     } on FirebaseException catch (exception) {
@@ -107,7 +106,8 @@ class NoteRepository implements INoteRepository {
         .orderBy("serverTimeStamp", descending: true)
         .snapshots()
         .map((snapshot) {
-          final docs = snapshot.docs.where((doc) => !doc.metadata.hasPendingWrites);
+          final docs =
+              snapshot.docs.where((doc) => !doc.metadata.hasPendingWrites);
 
           return docs.map(
             (doc) => NoteDTO.fromFirestore(doc).toDomain(),
