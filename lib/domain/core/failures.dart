@@ -4,6 +4,16 @@ part 'failures.freezed.dart';
 
 @freezed
 class ValueFailure<T> with _$ValueFailure<T> {
+  const factory ValueFailure.invalidName({
+    required T failedValue,
+  }) = InvalidName<T>;
+
+  const factory ValueFailure.emptyName() = EmptyName<T>;
+
+  const factory ValueFailure.shortName({
+    required T failedValue,
+  }) = ShortName<T>;
+
   const factory ValueFailure.invalidEmail({
     required T failedValue,
   }) = InvalidEmail<T>;

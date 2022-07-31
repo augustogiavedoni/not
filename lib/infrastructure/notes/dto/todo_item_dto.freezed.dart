@@ -159,7 +159,9 @@ class _$_TodoItemDTO extends _TodoItemDTO {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_TodoItemDTOToJson(this);
+    return _$$_TodoItemDTOToJson(
+      this,
+    );
   }
 }
 
@@ -174,11 +176,11 @@ abstract class _TodoItemDTO extends TodoItemDTO {
       _$_TodoItemDTO.fromJson;
 
   @override
-  String get id => throw _privateConstructorUsedError;
+  String get id;
   @override
-  String get name => throw _privateConstructorUsedError;
+  String get name;
   @override
-  bool get completed => throw _privateConstructorUsedError;
+  bool get completed;
   @override
   @JsonKey(ignore: true)
   _$$_TodoItemDTOCopyWith<_$_TodoItemDTO> get copyWith =>

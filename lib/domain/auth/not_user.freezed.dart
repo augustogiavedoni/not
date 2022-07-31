@@ -16,6 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$NotUser {
+  Name get name => throw _privateConstructorUsedError;
   UniqueId get id => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -26,7 +27,7 @@ mixin _$NotUser {
 abstract class $NotUserCopyWith<$Res> {
   factory $NotUserCopyWith(NotUser value, $Res Function(NotUser) then) =
       _$NotUserCopyWithImpl<$Res>;
-  $Res call({UniqueId id});
+  $Res call({Name name, UniqueId id});
 }
 
 /// @nodoc
@@ -39,9 +40,14 @@ class _$NotUserCopyWithImpl<$Res> implements $NotUserCopyWith<$Res> {
 
   @override
   $Res call({
+    Object? name = freezed,
     Object? id = freezed,
   }) {
     return _then(_value.copyWith(
+      name: name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as Name,
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -56,7 +62,7 @@ abstract class _$$_NotUserCopyWith<$Res> implements $NotUserCopyWith<$Res> {
           _$_NotUser value, $Res Function(_$_NotUser) then) =
       __$$_NotUserCopyWithImpl<$Res>;
   @override
-  $Res call({UniqueId id});
+  $Res call({Name name, UniqueId id});
 }
 
 /// @nodoc
@@ -70,9 +76,14 @@ class __$$_NotUserCopyWithImpl<$Res> extends _$NotUserCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? name = freezed,
     Object? id = freezed,
   }) {
     return _then(_$_NotUser(
+      name: name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as Name,
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -84,14 +95,16 @@ class __$$_NotUserCopyWithImpl<$Res> extends _$NotUserCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_NotUser implements _NotUser {
-  const _$_NotUser({required this.id});
+  const _$_NotUser({required this.name, required this.id});
 
+  @override
+  final Name name;
   @override
   final UniqueId id;
 
   @override
   String toString() {
-    return 'NotUser(id: $id)';
+    return 'NotUser(name: $name, id: $id)';
   }
 
   @override
@@ -99,12 +112,15 @@ class _$_NotUser implements _NotUser {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_NotUser &&
+            const DeepCollectionEquality().equals(other.name, name) &&
             const DeepCollectionEquality().equals(other.id, id));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(id));
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(name),
+      const DeepCollectionEquality().hash(id));
 
   @JsonKey(ignore: true)
   @override
@@ -113,10 +129,13 @@ class _$_NotUser implements _NotUser {
 }
 
 abstract class _NotUser implements NotUser {
-  const factory _NotUser({required final UniqueId id}) = _$_NotUser;
+  const factory _NotUser(
+      {required final Name name, required final UniqueId id}) = _$_NotUser;
 
   @override
-  UniqueId get id => throw _privateConstructorUsedError;
+  Name get name;
+  @override
+  UniqueId get id;
   @override
   @JsonKey(ignore: true)
   _$$_NotUserCopyWith<_$_NotUser> get copyWith =>

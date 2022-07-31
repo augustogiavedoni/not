@@ -51,6 +51,28 @@ Either<ValueFailure<KtList<T>>, KtList<T>> validateMaxListLength<T>(
   }
 }
 
+Either<ValueFailure<String>, String> validateName(String name) {
+  const String regEx = r"""^(([A-za-z]+[\s]{1}[A-za-z]+)|([A-Za-z]+))$""";
+
+  if (RegExp(regEx).hasMatch(name) && name.length >= 3) {
+    return right(name);
+  } else {
+    if (name.isEmpty) {
+      return left(
+        const ValueFailure.emptyName(),
+      );
+    } else if (name.length <= 3) {
+      return left(
+        ValueFailure.shortName(failedValue: name),
+      );
+    } else {
+      return left(
+        ValueFailure.invalidName(failedValue: name),
+      );
+    }
+  }
+}
+
 Either<ValueFailure<String>, String> validateEmailAddress(String emailAddress) {
   const String regEx =
       r"""^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+""";

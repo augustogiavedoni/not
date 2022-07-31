@@ -234,7 +234,7 @@ class _$EmailChanged implements EmailChanged {
 abstract class EmailChanged implements SignInFormEvent {
   const factory EmailChanged(final String emailAddress) = _$EmailChanged;
 
-  String get emailAddress => throw _privateConstructorUsedError;
+  String get emailAddress;
   @JsonKey(ignore: true)
   _$$EmailChangedCopyWith<_$EmailChanged> get copyWith =>
       throw _privateConstructorUsedError;
@@ -384,7 +384,7 @@ class _$PasswordChanged implements PasswordChanged {
 abstract class PasswordChanged implements SignInFormEvent {
   const factory PasswordChanged(final String password) = _$PasswordChanged;
 
-  String get password => throw _privateConstructorUsedError;
+  String get password;
   @JsonKey(ignore: true)
   _$$PasswordChangedCopyWith<_$PasswordChanged> get copyWith =>
       throw _privateConstructorUsedError;
@@ -835,16 +835,15 @@ abstract class _SignInFormState implements SignInFormState {
           authFailureOrSuccessOption}) = _$_SignInFormState;
 
   @override
-  EmailAddress get emailAddress => throw _privateConstructorUsedError;
+  EmailAddress get emailAddress;
   @override
-  Password get password => throw _privateConstructorUsedError;
+  Password get password;
   @override
-  bool get showErrorMessages => throw _privateConstructorUsedError;
+  bool get showErrorMessages;
   @override
-  bool get isSubmitting => throw _privateConstructorUsedError;
+  bool get isSubmitting;
   @override
-  Option<Either<AuthFailure, Unit>> get authFailureOrSuccessOption =>
-      throw _privateConstructorUsedError;
+  Option<Either<AuthFailure, Unit>> get authFailureOrSuccessOption;
   @override
   @JsonKey(ignore: true)
   _$$_SignInFormStateCopyWith<_$_SignInFormState> get copyWith =>

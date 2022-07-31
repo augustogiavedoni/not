@@ -4,6 +4,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../domain/auth/not_user.dart';
+import '../../domain/auth/value_objects/name.dart';
 import '../../domain/auth/value_objects/password.dart';
 import '../../domain/auth/value_objects/email_address.dart';
 import '../../domain/auth/auth_failure.dart';
@@ -24,9 +25,11 @@ class FirebaseAuthFacade implements IAuthFacade {
 
   @override
   Future<Either<AuthFailure, Unit>> registerWithEmailAndPassword({
+    required Name name,
     required EmailAddress emailAddress,
     required Password password,
   }) async {
+    final String nameString = name.getOrCrash();
     final String emailAddressString = emailAddress.getOrCrash();
     final String passwordString = password.getOrCrash();
 
@@ -35,6 +38,8 @@ class FirebaseAuthFacade implements IAuthFacade {
         email: emailAddressString,
         password: passwordString,
       );
+
+      await _firebaseAuth.currentUser?.updateDisplayName(nameString);
 
       return right(unit);
     } on FirebaseAuthException catch (e) {
@@ -89,6 +94,9 @@ class FirebaseAuthFacade implements IAuthFacade {
       );
 
       await _firebaseAuth.signInWithCredential(googleAuthCredential);
+
+      await _firebaseAuth.currentUser
+          ?.updateDisplayName(googleSignInAccount.displayName);
 
       return right(unit);
     } on FirebaseAuthException catch (_) {
