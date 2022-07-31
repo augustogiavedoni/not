@@ -6,6 +6,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import '../../../../application/auth/auth_bloc.dart';
 import '../../../../application/notes/note_watcher/note_watcher_bloc.dart';
 import '../../../routes/router.gr.dart';
+import 'avatar.dart';
 
 class AvatarOptions extends HookWidget {
   const AvatarOptions({Key? key}) : super(key: key);
@@ -66,9 +67,7 @@ class AvatarOptions extends HookWidget {
                 ),
           ),
         ],
-        child: const CircleAvatar(
-          backgroundColor: Colors.yellow,
-        ),
+        child: const NotUserAvatar(),
       ),
     );
   }
