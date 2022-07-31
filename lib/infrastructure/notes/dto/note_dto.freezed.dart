@@ -211,7 +211,9 @@ class _$_NoteDTO extends _NoteDTO {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_NoteDTOToJson(this);
+    return _$$_NoteDTOToJson(
+      this,
+    );
   }
 }
 
@@ -230,16 +232,16 @@ abstract class _NoteDTO extends NoteDTO {
 
   @override
   @JsonKey(ignore: true)
-  String? get id => throw _privateConstructorUsedError;
+  String? get id;
   @override
-  String get body => throw _privateConstructorUsedError;
+  String get body;
   @override
-  int get color => throw _privateConstructorUsedError;
+  int get color;
   @override
-  List<TodoItemDTO> get todos => throw _privateConstructorUsedError;
+  List<TodoItemDTO> get todos;
   @override
   @ServerTimestampConverter()
-  FieldValue get serverTimeStamp => throw _privateConstructorUsedError;
+  FieldValue get serverTimeStamp;
   @override
   @JsonKey(ignore: true)
   _$$_NoteDTOCopyWith<_$_NoteDTO> get copyWith =>

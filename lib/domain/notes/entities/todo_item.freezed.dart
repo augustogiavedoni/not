@@ -155,11 +155,11 @@ abstract class _TodoItem extends TodoItem {
   const _TodoItem._() : super._();
 
   @override
-  UniqueId get id => throw _privateConstructorUsedError;
+  UniqueId get id;
   @override
-  TodoName get name => throw _privateConstructorUsedError;
+  TodoName get name;
   @override
-  bool get completed => throw _privateConstructorUsedError;
+  bool get completed;
   @override
   @JsonKey(ignore: true)
   _$$_TodoItemCopyWith<_$_TodoItem> get copyWith =>

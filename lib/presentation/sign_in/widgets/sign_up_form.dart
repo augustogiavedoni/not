@@ -106,6 +106,64 @@ class _SignUpFormState extends State<SignUpForm> {
                         TextFormField(
                           decoration: InputDecoration(
                             prefixIcon: const Icon(
+                              Icons.account_circle_outlined,
+                              color: black,
+                            ),
+                            labelText: "Name",
+                            labelStyle:
+                                Theme.of(context).textTheme.bodyText2!.copyWith(
+                                      color: black,
+                                    ),
+                            border: UnderlineInputBorder(
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            enabledBorder: const UnderlineInputBorder(
+                              borderSide: BorderSide(
+                                color: yellow,
+                              ),
+                            ),
+                            focusedBorder: const UnderlineInputBorder(
+                              borderSide: BorderSide(
+                                color: yellow,
+                              ),
+                            ),
+                            focusColor: Colors.white,
+                          ),
+                          style:
+                              Theme.of(context).textTheme.bodyText2!.copyWith(
+                                    color: black,
+                                  ),
+                          cursorColor: yellow,
+                          autocorrect: false,
+                          enableSuggestions: true,
+                          keyboardType: TextInputType.text,
+                          textCapitalization: TextCapitalization.words,
+                          onChanged: (name) =>
+                              BlocProvider.of<SignUpFormBloc>(context).add(
+                            SignUpFormEvent.nameChanged(name),
+                          ),
+                          validator: (_) =>
+                              BlocProvider.of<SignUpFormBloc>(context)
+                                  .state
+                                  .name
+                                  .value
+                                  .fold(
+                                    (failure) => failure.maybeMap(
+                                      invalidName: (_) => "The name is invalid",
+                                      emptyName: (_) =>
+                                          "The name can't be empty",
+                                      shortName: (_) => "The name is too short",
+                                      orElse: () => null,
+                                    ),
+                                    (_) => null,
+                                  ),
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        TextFormField(
+                          decoration: InputDecoration(
+                            prefixIcon: const Icon(
                               Icons.email_rounded,
                               color: black,
                             ),

@@ -239,7 +239,7 @@ abstract class _Initialized implements NoteFormEvent {
   const factory _Initialized(final Option<Note> initialNoteOption) =
       _$_Initialized;
 
-  Option<Note> get initialNoteOption => throw _privateConstructorUsedError;
+  Option<Note> get initialNoteOption;
   @JsonKey(ignore: true)
   _$$_InitializedCopyWith<_$_Initialized> get copyWith =>
       throw _privateConstructorUsedError;
@@ -391,7 +391,7 @@ class _$_BodyChanged implements _BodyChanged {
 abstract class _BodyChanged implements NoteFormEvent {
   const factory _BodyChanged(final String body) = _$_BodyChanged;
 
-  String get body => throw _privateConstructorUsedError;
+  String get body;
   @JsonKey(ignore: true)
   _$$_BodyChangedCopyWith<_$_BodyChanged> get copyWith =>
       throw _privateConstructorUsedError;
@@ -543,7 +543,7 @@ class _$_ColorChanged implements _ColorChanged {
 abstract class _ColorChanged implements NoteFormEvent {
   const factory _ColorChanged(final Color color) = _$_ColorChanged;
 
-  Color get color => throw _privateConstructorUsedError;
+  Color get color;
   @JsonKey(ignore: true)
   _$$_ColorChangedCopyWith<_$_ColorChanged> get copyWith =>
       throw _privateConstructorUsedError;
@@ -696,7 +696,7 @@ abstract class _TodosChanged implements NoteFormEvent {
   const factory _TodosChanged(final KtList<TodoItemPrimitive> todos) =
       _$_TodosChanged;
 
-  KtList<TodoItemPrimitive> get todos => throw _privateConstructorUsedError;
+  KtList<TodoItemPrimitive> get todos;
   @JsonKey(ignore: true)
   _$$_TodosChangedCopyWith<_$_TodosChanged> get copyWith =>
       throw _privateConstructorUsedError;
@@ -1025,16 +1025,15 @@ abstract class _Initial implements NoteFormState {
           saveFailureOrSucessOption}) = _$_Initial;
 
   @override
-  Note get note => throw _privateConstructorUsedError;
+  Note get note;
   @override
-  bool get showErrorMessages => throw _privateConstructorUsedError;
+  bool get showErrorMessages;
   @override
-  bool get isEditing => throw _privateConstructorUsedError;
+  bool get isEditing;
   @override
-  bool get isSaving => throw _privateConstructorUsedError;
+  bool get isSaving;
   @override
-  Option<Either<NoteFailure, Unit>> get saveFailureOrSucessOption =>
-      throw _privateConstructorUsedError;
+  Option<Either<NoteFailure, Unit>> get saveFailureOrSucessOption;
   @override
   @JsonKey(ignore: true)
   _$$_InitialCopyWith<_$_Initial> get copyWith =>
