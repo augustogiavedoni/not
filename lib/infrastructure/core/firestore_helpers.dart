@@ -6,12 +6,11 @@ import '../../injection.dart';
 
 extension FirestoreX on FirebaseFirestore {
   Future<DocumentReference> userDocument() async {
+    final firestore = getIt<FirebaseFirestore>();
     final userOption = getIt<IAuthFacade>().getSignedInUser();
     final user = userOption.getOrElse(() => throw NotAuthenticatedError());
 
-    return FirebaseFirestore.instance
-        .collection("users")
-        .doc(user.id.getOrCrash());
+    return firestore.collection("users").doc(user.id.getOrCrash());
   }
 }
 
