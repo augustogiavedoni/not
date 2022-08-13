@@ -7,6 +7,7 @@ import '../../../../application/notes/note_watcher/note_watcher_bloc.dart';
 import '../../../../domain/notes/entities/note.dart';
 import '../../../../domain/notes/note_failure.dart';
 import '../../../common_widgets/custom_dialog.dart';
+import 'empty_notes_message.dart';
 import 'note_card.dart';
 import 'note_with_error_card.dart';
 
@@ -30,25 +31,30 @@ class NotesOverviewBody extends StatelessWidget {
                 horizontal: size.width * 0.05,
                 vertical: 10,
               ),
-              child: StaggeredGrid.count(
-                crossAxisCount: 2,
-                crossAxisSpacing: 15,
-                mainAxisSpacing: 15,
-                children: List.generate(state.notes.size, (index) {
-                  final Note note = state.notes[index];
+              child: state.notes.isEmpty()
+                  ? const EmptyNotesMessage()
+                  : StaggeredGrid.count(
+                      crossAxisCount: 2,
+                      crossAxisSpacing: 15,
+                      mainAxisSpacing: 15,
+                      children: List.generate(
+                        state.notes.size,
+                        (index) {
+                          final Note note = state.notes[index];
 
-                  if (note.failureOption.isSome()) {
-                    return NoteWithErrorCard(note: note);
-                  } else {
-                    return NoteCard(
-                      key: ValueKey(
-                        note.id.getOrCrash(),
+                          if (note.failureOption.isSome()) {
+                            return NoteWithErrorCard(note: note);
+                          } else {
+                            return NoteCard(
+                              key: ValueKey(
+                                note.id.getOrCrash(),
+                              ),
+                              note: note,
+                            );
+                          }
+                        },
                       ),
-                      note: note,
-                    );
-                  }
-                }),
-              ),
+                    ),
             );
           },
           loadFailure: (state) {

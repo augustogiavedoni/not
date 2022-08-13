@@ -8,6 +8,7 @@ import '../../../application/notes/note_watcher/note_watcher_bloc.dart';
 import '../../../domain/notes/note_failure.dart';
 import '../../../injection.dart';
 import '../../common_widgets/custom_dialog.dart';
+import '../../core/theme/app_colors.dart';
 import '../../routes/router.gr.dart';
 import 'widgets/avatar_options.dart';
 import 'widgets/notes_overview_body.dart';
@@ -60,22 +61,25 @@ class NotesOverviewScreen extends StatelessWidget {
             ),
             centerTitle: false,
             actions: const <Widget>[
-              // UncompletedSwitch(),
               AvatarOptions(),
             ],
             elevation: 0,
-            backgroundColor: const Color(0XFF171D26),
+            backgroundColor: darkblue,
           ),
           floatingActionButton: FloatingActionButton(
+            backgroundColor: const Color(0XFF39485C),
             onPressed: () => context.router.push(
               NoteFormScreenRoute(
                 note: null,
               ),
             ),
-            child: const Icon(Icons.add),
+            child: const Icon(
+              Icons.add,
+              color: lightblue,
+            ),
           ),
           body: const NotesOverviewBody(),
-          backgroundColor: const Color(0XFF171D26),
+          backgroundColor: darkblue,
         ),
       ),
     );

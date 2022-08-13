@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../core/theme/app_colors.dart';
 import 'widgets/settings_options.dart';
 
 class SettingsScreen extends StatelessWidget {
@@ -26,9 +27,9 @@ class SettingsScreen extends StatelessWidget {
         ],
         centerTitle: false,
         elevation: 0,
-        backgroundColor: const Color(0XFF171D26),
+        backgroundColor: darkblue,
       ),
-      backgroundColor: const Color(0XFF171D26),
+      backgroundColor: darkblue,
       body: const SettingsOptions(),
     );
   }
