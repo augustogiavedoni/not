@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../../domain/auth/i_auth_facade.dart';
 import '../../../../domain/core/errors.dart';
 import '../../../../injection.dart';
+import '../../../core/theme/app_colors.dart';
 
 class NotUserAvatar extends StatefulWidget {
   const NotUserAvatar({Key? key}) : super(key: key);
@@ -35,7 +36,7 @@ class _NotUserAvatarState extends State<NotUserAvatar> {
       child: Text(
         initials,
         style: Theme.of(context).textTheme.bodyText2!.copyWith(
-              color: const Color(0XFFB3C4ff),
+              color: lightblue,
               fontWeight: FontWeight.bold,
             ),
       ),

@@ -5,6 +5,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 
 import '../../../../application/auth/auth_bloc.dart';
 import '../../../../application/notes/note_watcher/note_watcher_bloc.dart';
+import '../../../core/theme/app_colors.dart';
 import '../../../routes/router.gr.dart';
 import 'avatar.dart';
 
@@ -77,10 +78,10 @@ class AvatarOptions extends HookWidget {
     required String text,
   }) {
     return Row(
-      children: [
+      children: <Widget>[
         Icon(
           icon,
-          color: const Color(0XFF171D26),
+          color: darkblue,
         ),
         const SizedBox(
           width: 10,
