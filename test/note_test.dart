@@ -98,5 +98,69 @@ void main() {
 
       expect(result.isRight(), true);
     });
+
+    test("Failure when adding a note with empty body to the repository",
+        () async {
+      final FakeFirebaseFirestore fakeFirebaseFirestore =
+          FakeFirebaseFirestore();
+      final NoteRepository noteRepository =
+          NoteRepository(fakeFirebaseFirestore);
+      final Note mockedNote = Note(
+        id: UniqueId(),
+        body: NoteBody(""),
+        color: NoteColor(NoteColor.predefinedColors.first),
+        todos: List3(const KtList.empty()),
+      );
+
+      expect(
+        () async => await noteRepository.create(mockedNote),
+        throwsA(isA<UnexpectedValueError>()),
+      );
+    });
+
+    test("Successfuly delete note from the repository", () async {
+      final FakeFirebaseFirestore fakeFirebaseFirestore =
+          FakeFirebaseFirestore();
+      final NoteRepository noteRepository =
+          NoteRepository(fakeFirebaseFirestore);
+      final Note mockedNote = Note(
+        id: UniqueId(),
+        body: NoteBody("This is a mocked note"),
+        color: NoteColor(NoteColor.predefinedColors.first),
+        todos: List3(const KtList.empty()),
+      );
+
+      await noteRepository.create(mockedNote);
+      final result = await noteRepository.delete(mockedNote);
+
+      expect(result.isRight(), true);
+    });
+
+    test("Successfuly update a note inside the repository", () async {
+      final FakeFirebaseFirestore fakeFirebaseFirestore =
+          FakeFirebaseFirestore();
+      final NoteRepository noteRepository =
+          NoteRepository(fakeFirebaseFirestore);
+      final UniqueId uniqueId = UniqueId();
+      final Note mockedNote = Note(
+        id: uniqueId,
+        body: NoteBody("This is a mocked note"),
+        color: NoteColor(NoteColor.predefinedColors.first),
+        todos: List3(const KtList.empty()),
+      );
+
+      await noteRepository.create(mockedNote);
+
+      final Note updatedMockedNote = Note(
+        id: uniqueId,
+        body: NoteBody("This note was updated"),
+        color: NoteColor(NoteColor.predefinedColors.first),
+        todos: List3(const KtList.empty()),
+      );
+
+      final result = await noteRepository.update(updatedMockedNote);
+
+      expect(result.isRight(), true);
+    });
   });
 }
