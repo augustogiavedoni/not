@@ -1,10 +1,10 @@
 # not !
 
-not ! is a mobile app both for Android and iOS made with [Flutter](https://flutter.dev). It was build using DDD as the architectural pattern. You may ask yourself what is DDD so I'll try to explain it.
+not ! is a mobile app both for Android and iOS made with [Flutter](https://flutter.dev). It was built using DDD as the architectural pattern. You may ask yourself what is DDD so I'll try to explain it.
 
 ### What is DDD?
 
-According to [Martin Fowler](https://martinfowler.com/bliki/DomainDrivenDesign.html), "the Domain-Driven Design is an approach to software development that centers the development on programming a domain model that has a rich undestanding of the processes and rules of a domain."
+According to [Martin Fowler](https://martinfowler.com/bliki/DomainDrivenDesign.html), "the Domain-Driven Design is an approach to software development that centers the development on programming a domain model that has a rich understanding of the processes and rules of a domain."
 
 [Here](https://github.com/ResoCoder/flutter-ddd-firebase-course/blob/master/ddd-architecture-proposal.svg) you can see a visual representation of the theoretical aspect of DDD. Eventually, if you want to know more about this design pattern, you can Google it.
 
@@ -31,16 +31,16 @@ not ! uses **Firebase** as the back-end provider. Services such as **Authenticat
 
 ## not ! CI/CD pipeline status
 
-[![CI/CD pipeline for not !](https://github.com/augiavedoni/not/actions/workflows/tests.yaml/badge.svg)](https://github.com/augiavedoni/not/actions/workflows/tests.yaml)
+[![CI/CD pipeline for not !](https://github.com/augustogiavedoni/not/actions/workflows/tests.yaml/badge.svg)](https://github.com/augustogiavedoni/not/actions/workflows/tests.yaml)
 
 ## not ! backlog
 
-You can see the backlog for this app [here](https://github.com/users/augiavedoni/projects/2)
+You can see the backlog for this app [here](https://github.com/users/augustogiavedoni/projects/2)
 
 ## Reported issues
 
-You can see the reported issues [here](https://github.com/augiavedoni/not/issues)
+You can see the reported issues [here](https://github.com/augustogiavedoni/not/issues)
 
 ## Important!
 
-Please, have in mind that this is an ongoing project and it may be subject to changes. Even bugs may be present that I'm not aware of. If you have ideas or suggestions, please do not hesitate to check the [Discussions](https://github.com/augiavedoni/not/discussions) section.
+Please, have in mind that this is an ongoing project and it may be subject to changes. Even bugs may be present that I'm not aware of. If you have ideas or suggestions, please do not hesitate to check the [Discussions](https://github.com/augustogiavedoni/not/discussions) section.
