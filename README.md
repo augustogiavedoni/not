@@ -29,7 +29,7 @@ At the moment, with not ! you can:
 
 ## What services does not ! use?
 
-not ! uses **Firebase** as the back-end provider. Services such as **Authentication** and **Firestore** help not ! run as expected.
+not ! was built on **Firebase** as the back-end provider, using **Authentication** and **Firestore**. The Firebase project behind the app has been deleted, so the back-end no longer exists. Sign-in and saving notes will not work until the app is connected to a new back-end.
 
 ## Important!
 
