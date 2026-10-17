@@ -1,5 +1,7 @@
 # not !
 
+> **Status: no longer actively developed.** This project is archived as it stands. There is no backlog, issue tracking or discussions, and no further changes are planned.
+
 not ! is a mobile app both for Android and iOS made with [Flutter](https://flutter.dev). It was built using DDD as the architectural pattern. You may ask yourself what is DDD so I'll try to explain it.
 
 ### What is DDD?
@@ -33,14 +35,6 @@ not ! uses **Firebase** as the back-end provider. Services such as **Authenticat
 
 [![CI/CD pipeline for not !](https://github.com/augustogiavedoni/not/actions/workflows/tests.yaml/badge.svg)](https://github.com/augustogiavedoni/not/actions/workflows/tests.yaml)
 
-## not ! backlog
-
-You can see the backlog for this app [here](https://github.com/users/augustogiavedoni/projects/2)
-
-## Reported issues
-
-You can see the reported issues [here](https://github.com/augustogiavedoni/not/issues)
-
 ## Important!
 
-Please, have in mind that this is an ongoing project and it may be subject to changes. Even bugs may be present that I'm not aware of. If you have ideas or suggestions, please do not hesitate to check the [Discussions](https://github.com/augustogiavedoni/not/discussions) section.
+This project is no longer maintained. Bugs may remain that will not be fixed. Issues and pull requests are not being reviewed. You are free to fork and adapt the code under the terms of the [MIT License](LICENSE).
