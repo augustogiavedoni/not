@@ -29,11 +29,7 @@ At the moment, with not ! you can:
 
 ## What services does not ! use?
 
-not ! uses **Firebase** as the back-end provider. Services such as **Authentication** and **Firestore** help not ! run as expected. Maybe in the future I'll implement my own back-end service with Spring Boot using AWS as the service provider (stay tuned for this).
-
-## not ! CI/CD pipeline status
-
-[![CI/CD pipeline for not !](https://github.com/augustogiavedoni/not/actions/workflows/tests.yaml/badge.svg)](https://github.com/augustogiavedoni/not/actions/workflows/tests.yaml)
+not ! uses **Firebase** as the back-end provider. Services such as **Authentication** and **Firestore** help not ! run as expected.
 
 ## Important!
 
